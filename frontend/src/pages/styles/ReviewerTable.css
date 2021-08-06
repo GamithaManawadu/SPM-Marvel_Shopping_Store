@@ -1,0 +1,43 @@
+#customers {
+  width: 75%;
+  padding: 20px;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  border: 1px;
+  border-radius: 1px;
+  border-color: rgb(21, 18, 71);
+}
+
+#customers td,
+#customers th {
+  border: 1px solid rgb(255, 255, 255);
+  border: 1px;
+  justify-content: center;
+  text-align: left;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #fdfdfd;
+  border: 1px;
+  border-radius: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+#customers tr:hover {
+  background-color: rgb(193, 218, 247);
+}
+
+#customers th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  background-color: rgb(21, 18, 71);
+  color: white;
+}
+#customer tr {
+  border: 1px;
+  border-radius: 1px;
+  border-color: rgb(89, 86, 153);
+}

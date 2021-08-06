@@ -1,0 +1,14 @@
+.event-card a {
+	background-color: var(--primary-accent-color);
+	border: 1px var(--primary-accent-color) solid;
+	color: white;
+	padding: 0.6rem 1rem;
+	border-radius: 5px;
+	margin-top: 2rem;
+}
+
+.grey {
+	color: rgb(162, 162, 162);
+	font-weight: 500;
+	font-size: 1rem;
+}

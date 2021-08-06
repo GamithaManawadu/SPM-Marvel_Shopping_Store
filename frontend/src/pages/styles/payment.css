@@ -1,0 +1,97 @@
+.cdForm {
+  width: 520px;
+  padding: 15px;
+  align-items: center;
+  box-shadow: 0px 0px 20px 2px rgba(236, 16, 16, 0.1);
+  margin-left: 340px;
+  align-content: center;
+
+  border-radius: 10px;
+  background-color: rgb(238, 124, 124);
+}
+.h1 {
+  font-size: 25px;
+  text-align: center;
+  color: rgb(241, 241, 241);
+}
+h4 {
+  font-size: 20px;
+  display: inline;
+}
+.lables {
+  font-size: 20px;
+  margin-top: 60px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.fee {
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(10, 52, 238);
+}
+
+.price {
+  margin-left: 320px;
+}
+
+.card {
+  margin-left: 60px;
+  margin-top: 30px;
+}
+.numberInput {
+  width: 320px;
+  font-size: 20px;
+  padding: 3px;
+  padding-right: 70px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border-color: rgb(247, 246, 246);
+}
+
+.cvcInput {
+  margin-left: 15px;
+  width: 110px;
+  font-size: 20px;
+  padding: 3px;
+  padding-right: 35px;
+  border-radius: 6px;
+  border-color: rgb(247, 246, 246);
+}
+
+.lables1 {
+  margin-left: 130px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+
+  margin-bottom: 190px;
+}
+
+.dateInput {
+  width: 200px;
+  font-size: 20px;
+  padding: 3px;
+  padding-right: 50px;
+  border-radius: 6px;
+  border-color: rgb(247, 246, 246);
+}
+
+.payBt {
+  margin-left: 7rem;
+  padding: 5px;
+  padding-left: 13px;
+  padding-right: 13px;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: #ee1616;
+  font-weight: bolder;
+  width: 150px;
+  margin-top: 40px;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

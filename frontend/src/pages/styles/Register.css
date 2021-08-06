@@ -1,0 +1,71 @@
+.register-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register-content .button-container {
+  width: 100%;
+  text-align: center;
+}
+
+.name-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.first-name {
+  margin-right: 1rem;
+}
+
+.first-name label,
+.last-name label {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.first-name,
+.last-name {
+  text-align: left;
+  width: 20rem;
+}
+
+.last-name h4 {
+  color: rgb(54, 14, 231);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#no-left-padding {
+  padding-left: 0;
+}
+
+.transparent {
+  background: white;
+  color: black;
+  border: 1px solid var(--secondary-accent-color);
+  padding-top: 0.9rem;
+  padding-bottom: 1rem;
+  margin-right: 2rem;
+}
+
+#material {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.error {
+  padding-top: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: crimson;
+}
+
+@media screen and (max-width: 870px) {
+  .first-name,
+  .last-name {
+    width: 100%;
+    margin: 0;
+  }
+}

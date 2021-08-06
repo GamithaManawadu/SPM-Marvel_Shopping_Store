@@ -1,0 +1,128 @@
+.researcher-profile h3 {
+  text-transform: capitalize;
+}
+
+.researcher-profile h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  padding-top: 5rem;
+}
+
+.publications {
+  margin-top: 4rem;
+}
+
+.item-card h2 {
+  padding-bottom: 0.5rem;
+}
+
+.item-card {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 3px 20px 2px rgba(160, 2, 2, 0.1);
+  border-radius: 10px;
+  border-color: tomato;
+  background-image: url(../../assets/images/card.jpeg);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 2rem;
+}
+
+.item-card p {
+  font-weight: 700;
+  text-transform: capitalize;
+  color: rgb(75, 75, 75);
+}
+
+.item-card .light,
+.profile-card p {
+  color: rgb(154, 154, 154);
+  font-size: 0.9rem;
+  padding-top: 1rem;
+}
+
+.item-card a,
+.add-new {
+  background-color: var(--primary-accent-color);
+  border: 1px var(--primary-accent-color) solid;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+}
+
+.add-new {
+  background-color: var(--primary-accent-color);
+  border: 1px var(--secondary-accent-color) solid;
+  margin-top: 200px;
+  width: 185px;
+}
+
+.item-card .pay {
+  background-color: white;
+  color: var(--primary-accent-color);
+  border: 1px var(--primary-accent-color) solid;
+  margin-right: 1rem;
+}
+
+.profile-avatar {
+  font-size: 3.5rem;
+  color: var(--secondary-accent-color);
+  margin-right: 3rem;
+}
+.profile-img h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+  color: rgb(240, 45, 10);
+}
+
+.profile-card {
+  padding: 2rem;
+  width: 100%;
+  margin-top: -150px;
+  align-content: center;
+  margin-right: -1950px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 20px 2px rgba(221, 8, 8, 0.1);
+  border-radius: 10px;
+  background-color: rgb(240, 227, 207);
+}
+
+.profile-card p {
+  padding-top: 0.2rem;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blue,
+.red,
+.green {
+  padding: 0.2rem 0.8rem;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+.blue {
+  background: rgb(40, 76, 195);
+}
+
+.red {
+  background: rgb(250, 57, 57);
+}
+.green {
+  background: rgb(21, 166, 96);
+}
+
+.researcher-profile .attendee-greeting {
+  padding-top: 1rem;
+}
