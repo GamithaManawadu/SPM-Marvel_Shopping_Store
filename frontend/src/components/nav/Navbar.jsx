@@ -5,7 +5,7 @@ import { IoNotificationsSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import logo from "../../assets/images/ICAF.png";
+import logo from "../../assets/images/marvel.gif";
 import { deleteUserAuth, getUserType } from "../../auth/userAuth";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 import NotificationList from "../notification/NotificationList";
@@ -34,10 +34,10 @@ const Navbar = () => {
 				) : (
 					<Link to={`/auth/user/${getUserType()}/dashboard`}>Dashboard</Link>
 				)}
-				<Link to="/workshops">Workshops</Link>
-				<Link to="/publications">Researches</Link>
-				<Link to="/blogs">Blogs</Link>
-				<Link to="/downloads">Downloads</Link>
+				<Link to="/workshops">Products</Link>
+				<Link to="/publications">About</Link>
+				<Link to="/blogs">Contact</Link>
+				<Link to="/downloads">Blogs</Link>
 			</nav>
 			<div
 				className="nav-cta"

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const TitleContent = () => {
 	return (
 		<section className="text-content">
-			<h1>International Conference on Application Frameworks - 2021</h1>
+			<h1>MARVEL FASHION</h1>
 			<motion.p
 				initial={{ y: 50, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}

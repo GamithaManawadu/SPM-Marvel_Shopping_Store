@@ -10,7 +10,7 @@ const SpeakerContent = () => {
 	useEffect(async () => {
 		const res = await fetch(`${BASE_URL}/conference`);
 		const data = await res.json();
-		setSpeakers(data.conference[0].keySpeakers);
+		setSpeakers(data.conference[0]);
 	}, []);
 
 	return (

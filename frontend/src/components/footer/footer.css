@@ -125,13 +125,13 @@
 }
 
 .footer-logo {
-  color: rgb(187, 131, 20);
+  color: rgb(15, 92, 235);
   justify-self: start;
   font-size: 30px;
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 50rem;
+
   display: flex;
   align-items: center;
   margin-bottom: 16px;

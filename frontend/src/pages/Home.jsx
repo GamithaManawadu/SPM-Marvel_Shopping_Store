@@ -7,11 +7,11 @@ import Countdown from "../components/home/Countdown";
 import Footer from "../components/footer/Footer";
 
 import "./styles/Home.css";
-import LandingImg from "../../src/assets/images/a1.jpg";
+import LandingImg from "../../src/assets/images/title.png";
 
 
 const Home = () => {
-	document.title = "International Conference on Application Frameworks | 2021";
+	document.title = "MARVEL FASHION";
 
 	return (
 		<>

@@ -9,7 +9,7 @@ const Footer = () => {
 	return (
 		<div className='footer-container'>
 
-<div className='footer-logo' color="gold">
+<div className="footer-logo" color="gold">
             <Link to='/' >
               ICAF 
               
