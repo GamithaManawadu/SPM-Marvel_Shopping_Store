@@ -11,7 +11,7 @@ const Footer = () => {
 
 <div className="footer-logo" color="gold">
             <Link to='/' >
-              ICAF 
+              MARVEL | FASHION
               
             </Link>
           </div>
@@ -30,7 +30,7 @@ const Footer = () => {
           
           <div className='footer-link-items'>
             
-            <h2><Link to="/publications">Resarches</Link></h2>
+            <h2><Link to="/products">Products</Link></h2>
             
           </div>
         </div>
@@ -39,7 +39,7 @@ const Footer = () => {
           
           <div className='footer-link-items'>
             
-            <h2><Link to="/about">About</Link></h2>
+            <h2><Link to="/about">About Us</Link></h2>
             
           </div>
         </div>
@@ -57,7 +57,7 @@ const Footer = () => {
       <section className='social-media'>
         
           <center>
-          <small className='website-rights'>ICAF © 2021</small>
+          <small className='website-rights'>MARVEL FASHION © 2021</small>
 		  </center>
           
       </section>

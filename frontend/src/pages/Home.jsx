@@ -11,7 +11,7 @@ import LandingImg from "../../src/assets/images/title.png";
 
 
 const Home = () => {
-	document.title = "MARVEL FASHION";
+	document.title = "MARVEL FASHION | Home";
 
 	return (
 		<>

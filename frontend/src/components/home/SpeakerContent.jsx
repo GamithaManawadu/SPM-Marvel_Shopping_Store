@@ -16,7 +16,7 @@ const SpeakerContent = () => {
 	return (
 		<section className="speaker-content">
 			<MdFormatQuote className="quote-icon" />
-			<h1>Meet our Keynote Speakers</h1>
+			<h1>Our Exclusive Services</h1>
 			<div className="speaker-card-content">
 				
 			</div>

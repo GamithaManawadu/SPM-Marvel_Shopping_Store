@@ -5,7 +5,7 @@ import LoginForm from "../components/login/LoginForm";
 import "./styles/Login.css";
 
 const Login = () => {
-	document.title = "ICAF | Login";
+	document.title = "MARVEL | Login ";
 
 	return (
 		<div>

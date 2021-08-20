@@ -9,7 +9,7 @@ const RegisterFormContext = () => {
 	const [userData, setUserData] = useState({});
 	const [userType, setUserType] = useState("");
 	const [material, setMaterial] = useState({});
-	const [payment, setPayment] = useState({});
+	
 	const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin"));
 
 	return (
@@ -24,8 +24,7 @@ const RegisterFormContext = () => {
 					setUserType,
 					material,
 					setMaterial,
-					payment,
-					setPayment,
+					
 					isLogin,
 					setIsLogin,
 				}}
