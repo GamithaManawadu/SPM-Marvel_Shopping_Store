@@ -6,7 +6,7 @@ import RegisterFormContext from "../context/RegisterFormContext";
 import "./styles/Register.css";
 
 const Register = () => {
-	document.title = "ICAF | Register";
+	document.title = "MARVEL | Register";
 
 	return (
 		<div>

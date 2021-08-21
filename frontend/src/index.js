@@ -10,4 +10,4 @@ ReactDOM.render(
 	</RegisterFormContext>,
 	document.getElementById("root")
 );
-;
+

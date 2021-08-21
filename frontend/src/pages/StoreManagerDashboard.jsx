@@ -3,16 +3,17 @@ import React from "react";
 import '../pages/styles/Editor.css';
 
 
-const Editor_dash = () => {
+const Store_dash = () => {
+    document.title = "MARVEL | Store Manager";
 	return (
 		<div className="editor">
 			
 			
-			
+			<storemanagerDashboard />
 			
 			
 		</div>
 	);
 };
 
-export default Editor_dash;
+export default Store_dash;

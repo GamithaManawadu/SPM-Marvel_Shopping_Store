@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
 
+import { FaUserAlt,FaExpeditedssl } from "react-icons/fa";
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
 const RegisterForm = () => {
@@ -10,24 +11,26 @@ const RegisterForm = () => {
 
 	return (
 		<div className="register-content">
-			<h1>Register</h1>
-			<motion.form
+			
+			<form
 				className="login-form"
 				initial={{ y: 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8 }}
 			>
-				<motion.div
+				<div
 					className="user-credentials"
 					initial={{ y: 50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.2 }}
 				>
+					<center><h2>Sign Up To a New Account</h2></center>
 					<div className="name-info">
 						<div className="first-name">
-							<label htmlFor="first-name">First Name</label>
+							<label htmlFor="first-name">First Name <FaUserAlt/></label>
 							<input
 								type="text"
+								placeholder="Enter Your First Name"
 								name="first-name"
 								id="first-name"
 								required
@@ -42,6 +45,7 @@ const RegisterForm = () => {
 							<label htmlFor="last-name">Last Name</label>
 							<input
 								type="text"
+								placeholder="Enter Your Last Name"
 								name="last-name"
 								id="last-name"
 								required
@@ -57,6 +61,7 @@ const RegisterForm = () => {
 					<input
 						type="text"
 						name="username"
+						placeholder="Enter Your User Name "
 						id="username"
 						required
 						autoComplete="off"
@@ -65,10 +70,11 @@ const RegisterForm = () => {
 							setUserData({ ...userData, username: e.target.value })
 						}
 					/>
-					<label htmlFor="password">Password</label>
+					<label htmlFor="password">Password <FaExpeditedssl/></label>
 					<input
 						type="password"
 						name="password"
+						placeholder="Enter Your Password"
 						id="password"
 						required
 						autoComplete="off"
@@ -77,58 +83,31 @@ const RegisterForm = () => {
 							setUserData({ ...userData, password: e.target.value })
 						}
 					/>
-				</motion.div>
-				<motion.div
+				</div>
+				<div
 					className="user-type-selection"
 					initial={{ y: 50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
 				>
-					<label id="no-left-padding">Register as a</label>
-					<div className="researcher">
-						<input
-							type="radio"
-							name="user-type"
-							id="researcher"
-							value="researcher"
-							required
-							defaultChecked={userData.userType === "researcher" && true}
-							onChange={() =>
-								setUserData({ ...userData, userType: "researcher" })
-							}
-						/>
-						<label htmlFor="researcher">Researcher</label>
-					</div>
-					<div className="presenter">
-						<input
-							type="radio"
-							name="user-type"
-							id="presenter"
-							value="presenter"
-							required
-							defaultChecked={userData.userType === "presenter" && true}
-							onChange={() =>
-								setUserData({ ...userData, userType: "presenter" })
-							}
-						/>
-						<label htmlFor="presenter">Presenter</label>
-					</div>
+					<label id="no-left-padding">How Do You Want To Sign Up?</label>
+					
 					<div className="attendee">
 						<input
 							type="radio"
 							name="user-type"
-							id="attendee"
-							value="attendee"
+							id="customer"
+							value="customer"
 							required
-							defaultChecked={userData.userType === "attendee" && true}
+							defaultChecked={userData.userType === "customer" && true}
 							onChange={() =>
-								setUserData({ ...userData, userType: "attendee" })
+								setUserData({ ...userData, userType: "customer" })
 							}
 						/>
-						<label htmlFor="attendee">Attendee</label>
+						<label htmlFor="customer">As a Customer</label>
 					</div>
-				</motion.div>
-				<motion.p
+				</div>
+				<p
 					initial={{ y: 50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.4 }}
@@ -137,8 +116,8 @@ const RegisterForm = () => {
 					<Link to="/auth/login" className="register-now">
 						Login
 					</Link>
-				</motion.p>
-				<motion.button
+				</p>
+				<button
 					className="gradient-cta"
 					initial={{ y: 10, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
@@ -147,9 +126,9 @@ const RegisterForm = () => {
 						setCurrentStep(2);
 					}}
 				>
-					Next
-				</motion.button>
-			</motion.form>
+					Procced to Next 
+				</button>
+			</form>
 		</div>
 	);
 };

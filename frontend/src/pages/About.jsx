@@ -7,7 +7,7 @@ import LatestNews from "../components/about/LatestNews";
 import "./styles/About.css";
 
 const About = () => {
-	document.title = "ICAF | Explore";
+	document.title = "MARVEL | ABOUT US";
 
 	return (
 		<div className="about-content">

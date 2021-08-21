@@ -4,54 +4,42 @@ import { motion } from "framer-motion";
 
 import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
-import "../../pages/Researcher";
-import ProfileCard from "./ProfileCard";
-import PublicationCard from "../common/UserItemCard";
 
-const PresenterProfile = () => {
-	const [workshops, setWorkshops] = useState([]);
+import ProfileCard from "./ProfileCard";
+
+const CustomerProfile = () => {
 	const [profile, setProfile] = useState({});
 
-	useEffect(async () => {
-		const res = await fetch(`${BASE_URL}/workshop/my`, {
-			headers: {
-				"Content-Type": "application/json",
-				authToken: getUserToken(),
-			},
-		});
-		const data = await res.json();
-		setWorkshops(data);
+	document.title = "MARVEL | Customer";
 
-		const result = await fetch(`${BASE_URL}/presenter/my`, {
+	useEffect(async () => {
+		console.log(getUserToken());
+		const result = await fetch(`${BASE_URL}/attendee/my`, {
 			headers: {
 				"Content-Type": "application/json",
 				authToken: getUserToken(),
 			},
 		});
 		const profile = await result.json();
-		setProfile(profile.presenter);
+		setProfile(profile.attendee);
 	}, []);
 	return (
 		<div className="researcher-profile">
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
-				<Link className="add-new" to="/workshop/create">
-					Add new Workshop
-				</Link>
 			</div>
-			<h1>Your Workshops</h1>
 			<motion.div
-				className="publications"
 				initial={{ y: 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
 			>
-				{workshops.map((workshop) => {
-					return <PublicationCard publication={workshop} key={workshop._id} />;
-				})}
+				<h1>You are successfully registered for the conference.</h1>
+				<h1 className="attendee-greeting">
+					Your token number is <span className="blue">{profile.id}</span>
+				</h1>
 			</motion.div>
 		</div>
 	);
 };
 
-export default PresenterProfile;
+export default CustomerProfile;

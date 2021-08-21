@@ -4,7 +4,7 @@ import { getUserType } from "../../auth/userAuth";
 
 import { RegisterDataContext } from "../../context/RegisterFormContext";
 
-const PrivateReviewerRoute = ({ children, ...rest }) => {
+const PrivateStoreManagerRoute = ({ children, ...rest }) => {
 	const { isLogin } = useContext(RegisterDataContext);
 	const userType = getUserType();
 
@@ -12,7 +12,7 @@ const PrivateReviewerRoute = ({ children, ...rest }) => {
 		<Route
 			{...rest}
 			render={() => {
-				return isLogin && userType === "reviewer" ? (
+				return isLogin && userType === "store" ? (
 					children
 				) : (
 					<Redirect to={`/auth/user/${userType}/dashboard`} />
@@ -22,4 +22,4 @@ const PrivateReviewerRoute = ({ children, ...rest }) => {
 	);
 };
 
-export default PrivateReviewerRoute;
+export default PrivateStoreManagerRoute;

@@ -21,8 +21,8 @@ const LoginForm = () => {
 	useEffect(() => {
 		if (
 			loginUser.username.includes("@admin") ||
-			loginUser.username.includes("@reviewer") ||
-			loginUser.username.includes("@editor")
+			loginUser.username.includes("@store") ||
+			loginUser.username.includes("@delivery")
 		) {
 			setDisabled(true);
 		}
@@ -46,21 +46,16 @@ const LoginForm = () => {
 				case "admin":
 					location = "user/admin/dashboard";
 					break;
-				case "editor":
-					location = "user/editor/dashboard";
+				case "delivery":
+					location = "user/delivery/dashboard";
 					break;
-				case "reviewer":
-					location = "user/reviewer/dashboard";
+				case "store":
+					location = "user/storemanager/dashboard";
 					break;
-				case "attendee":
-					location = "user/attendee/dashboard";
+				case "customer":
+					location = "user/customer/dashboard";
 					break;
-				case "researcher":
-					location = "user/researcher/dashboard";
-					break;
-				case "presenter":
-					location = "user/presenter/dashboard";
-					break;
+				
 			}
 
 			saveUserAuth(userAuth.authToken, userAuth.userType, userAuth.id);
@@ -130,47 +125,20 @@ const LoginForm = () => {
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
 				>
-					<div className="researcher">
-						<input
-							type="radio"
-							name="user-type"
-							id="researcher"
-							value="researcher"
-							required
-							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "researcher" })
-							}
-							disabled={disabled}
-						/>
-						<label htmlFor="researcher">Researcher</label>
-					</div>
-					<div className="presenter">
-						<input
-							type="radio"
-							name="user-type"
-							id="presenter"
-							value="presenter"
-							required
-							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "presenter" })
-							}
-							disabled={disabled}
-						/>
-						<label htmlFor="presenter">Presenter</label>
-					</div>
+					
 					<div className="attendee">
 						<input
 							type="radio"
 							name="user-type"
-							id="attendee"
-							value="attendee"
+							id="buyer"
+							value="buyer"
 							required
 							onClick={() =>
-								setLoginUser({ ...loginUser, userType: "attendee" })
+								setLoginUser({ ...loginUser, userType: "customer" })
 							}
 							disabled={disabled}
 						/>
-						<label htmlFor="attendee">Attendee</label>
+						<label htmlFor="customer">Customer</label>
 					</div>
 				</motion.div>
 				<motion.p
