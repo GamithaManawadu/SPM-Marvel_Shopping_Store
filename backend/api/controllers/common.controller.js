@@ -1,6 +1,6 @@
-const Attendee = require("../models/attendee.model");
-const Presenter = require("../models/presenter.model");
-const Researcher = require("../models/researcher.model");
+const Customer = require("../models/customer.model");
+
+
 const Moderator = require("../models/moderator.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -9,39 +9,30 @@ const loginUser = async (request, response) => {
 	let authUser;
 
 	if (request.body) {
-		if (request.body.userType === "researcher") {
-			userType = "researcher";
-			authUser = await Researcher.findOne({
+		if (request.body.userType === "customer") {
+			userType = "customer";
+			authUser = await Customer.findOne({
 				username: request.body.username,
 			});
-		} else if (request.body.userType === "presenter") {
-			userType = "presenter";
-			authUser = await Presenter.findOne({
-				username: request.body.username,
-			});
-		} else if (request.body.userType === "attendee") {
-			userType = "attendee";
-			authUser = await Attendee.findOne({
-				username: request.body.username,
-			});
-		} else if (request.body.userType === "") {
+		
+		} else if  (request.body.userType === "") {
 			if (request.body.username.includes("admin")) {
 				userType = "admin";
 				authUser = await Moderator.findOne({
 					username: request.body.username,
 					type: "admin",
 				});
-			} else if (request.body.username.includes("editor")) {
-				userType = "editor";
+			} else if (request.body.username.includes("delivery")) {
+				userType = "delivery";
 				authUser = await Moderator.findOne({
 					username: request.body.username,
-					type: "editor",
+					type: "delivery",
 				});
-			} else if (request.body.username.includes("reviewer")) {
-				userType = "reviewer";
+			} else if (request.body.username.includes("store")) {
+				userType = "store";
 				authUser = await Moderator.findOne({
 					username: request.body.username,
-					type: "reviewer",
+					type: "store",
 				});
 			} else if (authUser) {
 				return response

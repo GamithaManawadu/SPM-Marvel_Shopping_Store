@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
 
-const AttendeeSchema = new mongoose.Schema({
+const CustomerSchema = new mongoose.Schema({
 	firstName: { type: String, required: true, trim: true },
 	lastName: { type: String, required: true, trim: true },
 	username: { type: String, required: true, trim: true, unique: true },
 	password: { type: String, required: true, trim: true },
 	email: { type: String, required: true, trim: true, unique: true },
 	contactNumber: { type: String, required: true, trim: true },
-	isPaid: { type: Boolean, required: true, default: false },
+	address: { type: String, required: true, trim: true },
+	
 });
 
-const Attendee = mongoose.model("attendees", AttendeeSchema);
+const Customer = mongoose.model("customers", CustomerSchema);
 
-module.exports = Attendee;
+module.exports = Customer;

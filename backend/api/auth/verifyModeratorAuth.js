@@ -10,7 +10,7 @@ const verifyModeratorAuth = async (request, response, next) => {
 	try {
 		const verified = await jwt.verify(authToken, process.env.JWT_SECRET);
 
-		if (verified.userType === "admin" || verified.userType === "reviewer") {
+		if (verified.userType === "admin" || verified.userType === "store") {
 			request.user = verified;
 			next();
 		} else {

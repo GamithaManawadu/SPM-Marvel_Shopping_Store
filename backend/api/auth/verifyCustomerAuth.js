@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const verifyModeratorAuth = async (request, response, next) => {
+const verifyCustomerAuth = async (request, response, next) => {
 	const authToken = request.header("authToken");
 
 	if (!authToken) {
@@ -10,7 +10,7 @@ const verifyModeratorAuth = async (request, response, next) => {
 	try {
 		const verified = await jwt.verify(authToken, process.env.JWT_SECRET);
 
-		if (verified.userType === "researcher") {
+		if (verified.userType === "customer") {
 			request.user = verified;
 			request.userId = verified.id;
 			next();
@@ -22,4 +22,4 @@ const verifyModeratorAuth = async (request, response, next) => {
 	}
 };
 
-module.exports = verifyModeratorAuth;
+module.exports = verifyCustomerAuth;
