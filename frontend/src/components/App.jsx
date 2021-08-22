@@ -5,6 +5,7 @@ import PrivateRoute from "./private/PrivateRoute";
 import PrivateStoreManagerRoute from "./private/PrivateStoreManagerRoute";
 
 import Navbar from "../components/nav/Navbar";
+import Sidebar from "../components/AdminDashboard/sidebar/sidebar"
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
@@ -39,6 +40,7 @@ const App = () => {
 
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
+					<Sidebar/>
 				</PrivateRoute>
 				
 				<PrivateRoute exact path="/auth/user/delivery/dashboard">

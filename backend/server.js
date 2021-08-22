@@ -4,14 +4,8 @@ const cors = require("cors");
 const dotenv = require("dotenv").config();
 
 const customerRoutes = require("./api/routes/customer.routes");
-
-
-
 const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
-
-
-
 
 const app = express();
 
@@ -21,15 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/customer", customerRoutes);
-
-
-
-
 app.use("/auth", commonRoutes);
 app.use("/admin", adminRoutes);
-
-
-
 
 const PORT = process.env.PORT || 3000;
 
