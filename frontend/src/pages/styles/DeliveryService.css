@@ -5,6 +5,14 @@
     flex-direction: column;
     align-items: center;
   }
+
+.dashboard-content {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: mistyrose;
+}
   
   .deliveryservice-content h1,
   .register-content h1 {

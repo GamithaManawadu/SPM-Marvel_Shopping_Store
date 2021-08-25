@@ -5,11 +5,12 @@ const {
 	addDeliveryService,
 	getDeliveryServiceDetails,
 } = require("../controllers/deliveryservice.controller");
-const verifyAdminAuth = require("../auth/verifyAdminAuth");
-const verifyCustomerAuth = require("../auth/verifyCustomerAuth");
+// verifyAdminAuth = require("../auth/verifyAdminAuth");
+// verifyCustomerAuth = require("../auth/verifyCustomerAuth");
 
-router.get("/", verifyAdminAuth, getAllDeliveryServices);
-router.get("/:id", verifyCustomerAuth, getDeliveryServiceDetails);
+//.get("/", verifyAdminAuth, getAllDeliveryServices);
+router.get("/", getAllDeliveryServices);
+router.get("/:id", getDeliveryServiceDetails);
 router.post("/add", addDeliveryService);
 
 module.exports = router;
