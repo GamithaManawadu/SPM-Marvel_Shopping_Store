@@ -32,24 +32,14 @@ const useStyles = makeStyles({
 
 // const useImgStyles = makeStyles(componentStyles);
 
-const DeliveryDashboard = () => {
+const CustomerDelivery = () => {
 
   const classes = { ...useStyles() };
   
   return (
     <div className="dashboard-content">
-      {/* <div>
-        <Link className="button" to={`/auth/user/delivery/add/deliveryservice`}>
-          Add New Delivery Service
-        </Link>
-      </div> */}
-      {/* <div>
-        <Link className="button1" to={`/auth/user/delivery/deliveryservices`}>
-          Delivery Services
-        </Link>
-      </div> */}
       <br/>
-      <Card className={classes.cardRoot}>
+      {/* <Card className={classes.cardRoot}>
         <CardContent>
           <Typography
             variant="h4"
@@ -70,9 +60,9 @@ const DeliveryDashboard = () => {
           Delivery Services List
           </Button>
         </CardContent>
-      </Card>
+      </Card> */}
       <br/>
-      <Card className={classes.cardRoot}>
+      {/* <Card className={classes.cardRoot}>
         <CardContent>
           <Typography
             variant="h4"
@@ -93,10 +83,10 @@ const DeliveryDashboard = () => {
           See More
           </Button>
         </CardContent>
-      </Card>
+      </Card> */}
       <br />
     </div>
   );
 };
 
-export default DeliveryDashboard;
+export default CustomerDelivery;

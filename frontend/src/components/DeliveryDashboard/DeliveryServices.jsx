@@ -23,7 +23,7 @@ import { BASE_URL } from "../../config/config";
 
 
 
-const empList = [
+const deliveryServicesList = [
   { id: 1, dservicename: "CityPak", contactno: 112203344, email: 'citypaklk@gmail.com', noofvehicles: 20, noofdrivers: 10, chargeperkm: 70.00, startdate: "2021/08/21", updatedate: "2021/08/21" },
   { id: 2, dservicename: "Domex", contactno: 112203310, email: 'domexlk@gmail.com', noofvehicles: 30, noofdrivers: 18, chargeperkm: 60.00, startdate: "2021/08/21", updatedate: "2021/08/21" },
   { id: 3, dservicename: "Uber", contactno: 112003004, email: 'uberlk@gmail.com', noofvehicles: 75, noofdrivers: 69, chargeperkm: 63.50, startdate: "2021/08/21", updatedate: "2021/08/21" },
@@ -34,7 +34,7 @@ const empList = [
 
 function DeliveryServices() {
 
-  const [data, setData] = useState(empList)
+  const [data, setData] = useState(deliveryServicesList)
   const columns = [
     { title: "ID", field: "id", editable: false },
     {

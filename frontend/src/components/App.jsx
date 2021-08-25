@@ -13,6 +13,7 @@ import Admin from "../pages/Admin.dashboard";
 import Delivery from "../pages/DeliveryManager.dashboard";
 import AddDeliveryService from "../pages/DeliveryManager.addDeliveryService";
 import DeliveryServices from "../pages/DeliveryManager.deliveryServices";
+import CustomerDelivery from "../pages/DeliveryManager.checkout";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
 
@@ -51,6 +52,9 @@ const App = () => {
 				</PrivateRoute>
 				<PrivateRoute exact path="/auth/user/delivery/deliveryservices">
 					<DeliveryServices />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/delivery/customer/deliveryservices">
+					<CustomerDelivery />
 				</PrivateRoute>
 												
 				<PrivateRoute exact path="/auth/user/customer/dashboard">

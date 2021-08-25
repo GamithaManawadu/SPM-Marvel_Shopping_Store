@@ -37,7 +37,7 @@ const Navbar = () => {
 				<Link to="/products">Products</Link>
 				<Link to="/blogs">About</Link>
 				<Link to="/contact">Contact</Link>
-				<Link to="/cart">Cart</Link>
+				<Link to={`/auth/user/${getUserType()}/customer/deliveryservices`}>Cart</Link>
 			</nav>
 			<div
 				className="nav-cta"

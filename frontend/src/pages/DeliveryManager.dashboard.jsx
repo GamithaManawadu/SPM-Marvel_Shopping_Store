@@ -9,7 +9,6 @@ const Delivery_dash = () => {
 	return (
 		<div className="editor">
 			<DeliveryDashboard/>
-			{/* <AddDeliveryService/> */}
 		</div>
 	);
 };
