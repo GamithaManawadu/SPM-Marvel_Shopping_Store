@@ -8,15 +8,7 @@ const {   customersCount } = require("../controllers/admin.controller");
 
 Router.get("/customercount", customersCount)
 
-Router.route('/').get(function(req, res) {
-    Customer.find(function(err, users) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(users);
-            }
-        });
-});
+
 
 Router.route('/:id').get(function(req, res){
     let id = req.params.id;
@@ -30,8 +22,8 @@ Router.route('/update/:id').post(function(req, res) {
         if (!user)
             res.status(404).send('data is not found');
         else
-            user.firstname = req.body.firstname;
-			user.lastname = req.body.lastname;
+            user.firstName = req.body.firstName;
+			user.lastName = req.body.lastName;
 			user.username = req.body.username;
             user.email = req.body.email;
             user.contactNumber = req.body.contactNumber;

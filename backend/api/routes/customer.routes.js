@@ -5,14 +5,24 @@ const {
 	getAllCustomers,
 	saveCustomer,
 	getCustomerDetails,
+    deleteCustomer,
+    getUserprofileDetails,
+	updateUserProfile,
+
 } = require("../controllers/customer.controller");
 const verifyAdminAuth = require("../auth/verifyAdminAuth");
 const verifyCustomerAuth = require("../auth/verifyCustomerAuth");
-const Router = require("./admin.routes");
 
-router.get("/", verifyAdminAuth, getAllCustomers);
+router.get("/:id", verifyAdminAuth, getCustomerDetails);
+router.post("/register", saveCustomer);
+router.get("/", getAllCustomers);
 router.get("/my", verifyCustomerAuth, getCustomerDetails);
 router.post("/create", saveCustomer);
+router.delete("/:id", deleteCustomer);
+router.get("/userProfile", verifyCustomerAuth, getUserprofileDetails);
+router.put("/updateUserProfile/:id", verifyCustomerAuth, updateUserProfile);
+
+
 
 
 

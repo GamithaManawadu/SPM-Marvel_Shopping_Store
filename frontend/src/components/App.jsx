@@ -3,14 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import PrivateRoute from "./private/PrivateRoute";
 import PrivateStoreManagerRoute from "./private/PrivateStoreManagerRoute";
+import "./app.css";
 
 import Navbar from "../components/nav/Navbar";
-import Sidebar from "../components/AdminDashboard/sidebar/sidebar"
+
+
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Admin from "../pages/Admin.dashboard"
+import Admin from "../pages/Admin.dashboard";
+
+import EditCustomer from "../pages/Admin/customers/EditCustomer";
+import CustomerReport from "../pages/Admin/customers/Report";
+import Customers from "../pages/Admin/customers/Customer";
 import Delivery from "../pages/DeliveryManager.dashboard";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
@@ -38,10 +44,24 @@ const App = () => {
 					<Login />
 				</Route>
 
-				<PrivateRoute exact path="/auth/user/admin/dashboard">
-					<Admin />
-					<Sidebar/>
+				<Route exact path="/auth/user/admin/dashboard">
+				<Admin />  
+				</Route>
+            
+                             
+				
+				<PrivateRoute exact path="/auth/user/admin/customers">
+					<Customers />
 				</PrivateRoute>
+
+				<PrivateRoute exact path="/auth/user/admin/customer/edit/:id">
+					<EditCustomer />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/admin/customer/report">
+					<CustomerReport />
+				</PrivateRoute>
+					
+				
 				
 				<PrivateRoute exact path="/auth/user/delivery/dashboard">
 					<Delivery />
