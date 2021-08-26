@@ -212,7 +212,7 @@ class AddDeliveryServiceForm extends Component {
 						initial={{ x: 10, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "tween", duration: 0.8, delay: 0.5 }}
-						// onClick={() => setCurrentStep(1)}
+						onClick={() => this.props.history.push('/auth/user/delivery/dashboard')}
 					>
 						Back
 					</button>

@@ -115,7 +115,9 @@ function DeliveryServices() {
     <div className="deliveryservice-content">
       <h1 align="center">Delivery Services Details</h1>
       {/* <br/> */}
+      {/* <div className="container"> */}
       <MaterialTable
+        // className="container"
         title="Delivery Services Data"
         data={data}
         columns={columns}
@@ -152,6 +154,7 @@ function DeliveryServices() {
         }}
       />
     </div>
+    // </div>
   );
 }
 

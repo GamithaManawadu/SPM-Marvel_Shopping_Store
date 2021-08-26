@@ -6,6 +6,10 @@
     align-items: center;
   }
 
+  .container {
+    background-color: mistyrose;
+  }
+
 .dashboard-content {
     min-height: 60vh;
     display: flex;
