@@ -14,6 +14,7 @@ import Admin from "../pages/Admin.dashboard"
 import Delivery from "../pages/DeliveryManager.dashboard";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
+import Contact from "../pages/Contact";
 
 
 const App = () => {
@@ -31,31 +32,28 @@ const App = () => {
 				<PrivateRoute exact path="/blogs">
 					<About />
 				</PrivateRoute>
+				<PrivateRoute exact path="/contact">
+					<Contact />
+				</PrivateRoute>
 				<Route exact path="/auth/register">
 					<Register />
 				</Route>
 				<Route exact path="/auth/login">
 					<Login />
 				</Route>
-
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
 					<Sidebar/>
 				</PrivateRoute>
-				
 				<PrivateRoute exact path="/auth/user/delivery/dashboard">
 					<Delivery />
-				</PrivateRoute>
-												
+				</PrivateRoute>						
 				<PrivateRoute exact path="/auth/user/customer/dashboard">
 					<Customer />
 				</PrivateRoute>
-				
 				<PrivateStoreManagerRoute exact path="/auth/user/storemanager/dashboard">
 					<StoreManagerDashboard/>
 				</PrivateStoreManagerRoute>
-					
-				
 			</Switch>
 		</Router>
 	);
