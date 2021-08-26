@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Footer from "../components/footer/Footer";
-import { grey } from "@material-ui/core/colors";
 
 export default class Contact extends Component {
   constructor(props) {
@@ -70,7 +69,7 @@ export default class Contact extends Component {
         .post("http://localhost:3000/feedback/add", newFeedback)
         .then((res) => console.log(res.data));
       alert("Feedback send Successfully");
-      this.props.history.push("/contact");
+      this.props.history.push(`/contact`);
 
       this.setState({
         Email: "",
@@ -81,7 +80,7 @@ export default class Contact extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 20, backgroundColor: grey }}>
+      <div style={{ marginTop: 20 }}>
         <h3>
           <center>Contact Us</center>
         </h3>
