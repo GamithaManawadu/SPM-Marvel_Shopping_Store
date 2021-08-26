@@ -49,6 +49,7 @@ const App = () => {
 				</Route>
 
 
+
 				<Route exact path="/auth/user/admin/dashboard">
 				<Admin />  
 				</Route>
@@ -69,10 +70,15 @@ const App = () => {
 				
 				
 
+
+
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
 					<Sidebar/>
 				</PrivateRoute>
+
+
+
 
 				<PrivateRoute exact path="/auth/user/delivery/dashboard">
 					<Delivery />
