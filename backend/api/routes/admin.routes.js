@@ -4,8 +4,6 @@ const Customer = require("../models/customer.model")
 
 const {   customersCount } = require("../controllers/admin.controller");
 
-
-
 Router.get("/customercount", customersCount)
 
 

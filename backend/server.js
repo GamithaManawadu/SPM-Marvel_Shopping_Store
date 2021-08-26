@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const customerRoutes = require("./api/routes/customer.routes");
 const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
+const feedbackRoutes = require("./api/routes/feedback.routes");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 app.use("/customer", customerRoutes);
 app.use("/auth", commonRoutes);
 app.use("/admin", adminRoutes);
+app.use("/feedback", feedbackRoutes);
 
 const PORT = process.env.PORT || 3000;
 dotenv.config();
