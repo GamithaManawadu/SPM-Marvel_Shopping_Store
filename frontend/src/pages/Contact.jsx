@@ -80,49 +80,58 @@ export default class Contact extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 20 }}>
-        <h3>
-          <center>Contact Us</center>
-        </h3>
+      <div style={{ marginTop: 25 }}>
+        <div className="container" style={{ width: 670, backgroundColor: "#e3e4e6", borderRadius: 5, paddingBottom: 20, paddingTop: 20  }}>
+          <h3 style={{ fontSize: 40 }}>
+            <center>Contact Us</center>
+          </h3>
+          <div className="container-fluid" style={{ width: 650 }}>
+            <div className="col-lg-10 offset-lg-1">
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <label style={{ fontSize: 20 }}>Email Address:</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    value={this.state.Email}
+                    onChange={this.onChangeEmail}
+                    style={{ borderColor: "black", borderWidth: 1 }}
+                    required
+                  />
+                  <span className="text-danger">{this.state.EmailError}</span>
+                </div>
 
-        <div className="container" style={{ width: 650 }}>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Email Address:</label>
-              <input
-                type="email"
-                className="form-control"
-                value={this.state.Email}
-                onChange={this.onChangeEmail}
-                required
-              />
-              <span className="text-danger">{this.state.EmailError}</span>
-            </div>
+                <div
+                  className="form-group"
+                  style={{ marginTop: 20, marginTop: 20 }}
+                >
+                  <label style={{ fontSize: 20 }}>Message:</label>
+                  <textarea
+                    type="text"
+                    className="form-control"
+                    value={this.state.Message}
+                    onChange={this.onChangeMessage}
+                    style={{ borderColor: "black", borderWidth: 1 }}
+                    required
+                  />
+                </div>
 
-            <div className="form-group">
-              <label>Message:</label>
-              <textarea
-                type="text"
-                className="form-control"
-                value={this.state.Message}
-                onChange={this.onChangeMessage}
-                required
-              />
+                <div
+                  className="form-group"
+                  style={{ marginTop: 30, marginBottom: 15 }}
+                >
+                  <center>
+                    <input
+                      type="submit"
+                      value="Add Feedback"
+                      className="btn btn-success"
+                      style={{ fontSize: 20 }}
+                    />
+                  </center>
+                </div>
+              </form>
             </div>
-
-            <div
-              className="form-group"
-              style={{ marginTop: 30, marginBottom: 30 }}
-            >
-              <center>
-                <input
-                  type="submit"
-                  value="Add Feedback"
-                  className="btn btn-success"
-                />
-              </center>
-            </div>
-          </form>
+          </div>
         </div>
         <Footer />
       </div>
