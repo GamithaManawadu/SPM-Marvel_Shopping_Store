@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from "../../../config/config";
 import {getUserToken} from '../../../auth/userAuth';
+import './Customer.css';
 
 
 
@@ -15,7 +16,7 @@ const User = props => (
         <td className={props.user.completed ? 'completed' : ''}>{props.user.contactNumber}</td>
         <td className={props.user.completed ? 'completed' : ''}>{props.user.address}</td>
         <td>
-            <button className="btn btn-warning" ><Link to={"/auth/user/admin/customer/edit/" + props.user._id}><i className="far fa-edit"></i></Link>Edit</button>
+            <button className="btn btn-warning" ><Link to={"/customer/edit/" + props.user._id}><i className="far fa-edit"></i></Link>Edit</button>
             <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><i className="far fa-trash-alt"></i>Remove</button>
         </td>
     </tr>
@@ -76,11 +77,11 @@ export default class CustomersList extends Component {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
                 <h3><center>List of Customers</center></h3>
-                <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/customer/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
+                <button className="btn btn-success" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/customer/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
                 
-                <table className="table table-striped" style={{ marginTop: 20 }}>
+                <table id= "table" className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
-                        <tr>
+                        <tr classname="row" >
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Username</th>

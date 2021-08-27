@@ -54,11 +54,9 @@ const App = () => {
 				<Admin />  
 				</Route>
             
-                             
+				<Route path="/customers" component={Customers}></Route>           
 				
-				<PrivateRoute exact path="/auth/user/admin/customers">
-					<Customers />
-				</PrivateRoute>
+				
 
 				<PrivateRoute exact path="/auth/user/admin/customer/edit/:id">
 					<EditCustomer />
@@ -74,7 +72,7 @@ const App = () => {
 
 				<PrivateRoute exact path="/auth/user/admin/dashboard">
 					<Admin />
-					<Sidebar/>
+					
 				</PrivateRoute>
 
 

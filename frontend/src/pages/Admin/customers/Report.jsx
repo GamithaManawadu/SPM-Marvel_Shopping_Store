@@ -46,8 +46,8 @@ export default class ReportList extends Component {
         const users = this.state.users.map(
 
             users => [
-                users.firstname,
-                users.lastname,
+                users.firstName,
+                users.lastName,
                 users.username,
                 users.email,
                 users.contactNumber,
@@ -117,8 +117,8 @@ export default class ReportList extends Component {
                             this.state.users.map(
                                 users =>
                                     <tr key={users.id}>
-                                        <td>{users.firstname}</td>
-                                        <td>{users.lastname}</td>
+                                        <td>{users.firstName}</td>
+                                        <td>{users.lastName}</td>
                                         <td>{users.username}</td>
                                         <td>{users.email}</td>
                                         <td>{users.contactNumber}</td>

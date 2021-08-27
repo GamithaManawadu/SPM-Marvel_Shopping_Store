@@ -91,7 +91,7 @@ const CustomerForm = () => {
 					/>
 					<div className="name-info">
 						<div className="first-name">
-							<label htmlFor="address">Home Address <FaCcVisa className="icon"/><FaCcMastercard/><FaCcAmex/></label>
+							<label htmlFor="address">Home Address <FaLandmark className="icon"/></label>
 							<input
 								type="text"
 								name="address"

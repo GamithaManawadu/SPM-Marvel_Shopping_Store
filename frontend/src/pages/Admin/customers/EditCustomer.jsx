@@ -7,8 +7,8 @@ export default class EditUser extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeFirstName = this.onChangeFirstname.bind(this);
-        this.onChangeLastName = this.onChangeLastname.bind(this);
+        this.onChangeFirstName = this.onChangeFirstName.bind(this);
+        this.onChangeLastName = this.onChangeLastName.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeContactNumber = this.onChangeContactNumber.bind(this);

@@ -43,9 +43,9 @@ const AdminDashboard = () => {
 
 
 <button class="openbtn" onClick={toggleDrawer}>&#9776; Admin Dashboard</button>
-<h2>*Once You Approved a document it will be published in the system.</h2>
+<h2>Drag To View Admin Management Options</h2>
 
-<h2>*Once You rejected a document it will be deleted from the system.</h2>
+
 <div className="draw">
       <Drawer open={isOpen} onClose={toggleDrawer} direction='left'>
 
@@ -58,9 +58,8 @@ const AdminDashboard = () => {
 <br/>
 
 
-<a ><Link className="button" to={`/auth/user/admin/customers`}>Customer List</Link> </a>
-<a ><Link className="button" to={`/auth/user/admin/customer/edit/:id`}>Approved Workshop Proposals</Link> </a>
-<a ><Link className="button1" to={`/auth/user/admin/customer/report`}>Research Papers to be Reviewed</Link> </a>
+<a ><Link className="button" to={`/customers`}>Customer List</Link> </a>
+
 
 
 
