@@ -30,7 +30,6 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-
         <Route exact path="/about">
           <About />
         </Route>
@@ -46,26 +45,21 @@ const App = () => {
         <Route exact path="/auth/login">
           <Login />
         </Route>
-
         <Route exact path="/auth/user/admin/dashboard">
           <Admin />
         </Route>
-
         <PrivateRoute exact path="/auth/user/admin/customers">
           <Customers />
         </PrivateRoute>
-
         <PrivateRoute exact path="/auth/user/admin/customer/edit/:id">
           <EditCustomer />
         </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/customer/report">
           <CustomerReport />
         </PrivateRoute>
-
         <PrivateRoute exact path="/auth/user/admin/dashboard">
           <Admin />
         </PrivateRoute>
-
         <PrivateRoute exact path="/auth/user/delivery/dashboard">
           <Delivery />
         </PrivateRoute>
@@ -75,10 +69,7 @@ const App = () => {
         <PrivateRoute exact path="/auth/user/admin/dashboard">
           <Admintable />
         </PrivateRoute>
-        <PrivateStoreManagerRoute
-          exact
-          path="/auth/user/storemanager/dashboard"
-        >
+        <PrivateStoreManagerRoute exact path="/auth/user/storemanager/dashboard">
           <StoreManagerDashboard />
         </PrivateStoreManagerRoute>
       </Switch>

@@ -41,4 +41,49 @@ Router.route("/:id").delete(function (req, res) {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+//get all admins
+Router.route("/").get(function (req, res) {
+  Admin.find(function (err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(users);
+    }
+  });
+});
+
+//get a admin
+Router.route("/:id").get(function (req, res) {
+  let id = req.params.id;
+  Admin.findById(id, function (err, user) {
+    res.json(user);
+  });
+});
+
+//update a admin
+Router.route("/update/:id").post(function (req, res) {
+  Admin.findById(req.params.id, function (err, user) {
+    if (!user) res.status(404).send("data is not found");
+    else user.username = req.body.username;
+    user.email = req.body.email;
+    user.contact = req.body.contact;
+
+    user
+      .save()
+      .then((user) => {
+        res.json("User updated");
+      })
+      .catch((err) => {
+        res.status(400).send("Update not possible");
+      });
+  });
+});
+
+//delete a admin
+Router.route("/:id").delete(function (req, res) {
+  Admin.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Data is deleted!"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = Router;
