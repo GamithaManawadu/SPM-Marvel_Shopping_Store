@@ -52,6 +52,11 @@ class Contact extends Component {
       })
       .catch((err) => {
         console.log(console.err.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        })
       });
   };
 
