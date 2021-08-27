@@ -2,6 +2,7 @@ const express = require('express');
 const Feedback = require('../models/feedback.model');
 const feedbackRoutes = express.Router();
 
+//add a feedback
 feedbackRoutes.route('/add').post(function(req, res) {
     let item = new Feedback(req.body);
     item.save()
@@ -13,6 +14,7 @@ feedbackRoutes.route('/add').post(function(req, res) {
         });
 });
 
+//get all feedbacks
 feedbackRoutes.route('/').get(function(req, res) {
     Feedback.find(function(err, users) {
             if (err) {
@@ -23,6 +25,7 @@ feedbackRoutes.route('/').get(function(req, res) {
         });
 });
 
+//delete a feedback
 feedbackRoutes.route('/:id').delete(function(req, res) {
     Feedback.findByIdAndDelete(req.params.id)
         .then(() => res.json('Data is deleted!'))
