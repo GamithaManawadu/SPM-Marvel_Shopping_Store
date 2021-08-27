@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import Footer from "../components/footer/Footer";
 
@@ -35,7 +36,13 @@ class Contact extends Component {
       .post("http://localhost:3000/feedback/add", newFeedback)
       .then((res) => {
         console.log(res.data);
-        alert("Feedback send Successfully");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Feedback send successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this.props.history.push("/contact");
 
         this.setState({
@@ -78,7 +85,6 @@ class Contact extends Component {
                     style={{ borderColor: "black", borderWidth: 1 }}
                     required
                   />
-                  <span className="text-danger">{this.state.EmailError}</span>
                 </div>
 
                 <div
