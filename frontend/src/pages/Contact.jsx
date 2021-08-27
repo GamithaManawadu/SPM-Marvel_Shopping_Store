@@ -1,87 +1,66 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 import Footer from "../components/footer/Footer";
 
-export default class Contact extends Component {
+const initialState = {
+  email: "",
+  message: "",
+};
+class Contact extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeMessage = this.onChangeMessage.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      Email: "",
-      Message: "",
-
-      EmailError: "",
-    };
+    this.state = initialState;
   }
 
-  onChangeEmail(e) {
-    this.setState({
-      Email: e.target.value,
-    });
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
-  onChangeMessage(e) {
-    this.setState({
-      Message: e.target.value,
-    });
-  }
-
-  validate = () => {
-    let isError = false;
-
-    const errors = {
-      EmailError: "",
-    };
-
-    if (this.state.Email.indexOf("@") === -1) {
-      isError = true;
-      errors.EmailError = "Require Valid Email Address";
-    }
-
-    this.setState({
-      ...this.state,
-      ...errors,
-    });
-
-    return isError;
-  };
-
-  onSubmit(e) {
+  onSubmit = async (e) => {
     e.preventDefault();
 
-    const err = this.validate();
-    if (!err) {
-      console.log(`Form submitted:`);
-      console.log(`Email Address: ${this.state.Email}`);
-      console.log(`Message: ${this.state.Message}`);
+    let newFeedback = {
+      email: this.state.email,
+      message: this.state.message,
+    };
 
-      const newFeedback = {
-        Email: this.state.Email,
-        Message: this.state.Message,
-      };
+    console.log("success", newFeedback);
 
-      axios
-        .post("http://localhost:3000/feedback/add", newFeedback)
-        .then((res) => console.log(res.data));
-      alert("Feedback send Successfully");
-      this.props.history.push(`/contact`);
+    await axios
+      .post("http://localhost:3000/feedback/add", newFeedback)
+      .then((res) => {
+        console.log(res.data);
+        alert("Feedback send Successfully");
+        this.props.history.push("/contact");
 
-      this.setState({
-        Email: "",
-        Message: "",
+        this.setState({
+          email: "",
+          message: "",
+        });
+      })
+      .catch((err) => {
+        console.log(console.err.message);
       });
-    }
-  }
+  };
 
   render() {
     return (
       <div style={{ marginTop: 25 }}>
-        <div className="container" style={{ width: 670, backgroundColor: "#e3e4e6", borderRadius: 5, paddingBottom: 20, paddingTop: 20  }}>
+        <div
+          className="container"
+          style={{
+            width: 670,
+            backgroundColor: "#e3e4e6",
+            borderRadius: 5,
+            paddingBottom: 20,
+            paddingTop: 20,
+          }}
+        >
           <h3 style={{ fontSize: 40 }}>
             <center>Contact Us</center>
           </h3>
@@ -92,9 +71,10 @@ export default class Contact extends Component {
                   <label style={{ fontSize: 20 }}>Email Address:</label>
                   <input
                     type="email"
+                    name="email"
                     className="form-control"
-                    value={this.state.Email}
-                    onChange={this.onChangeEmail}
+                    value={this.state.email}
+                    onChange={this.onChange}
                     style={{ borderColor: "black", borderWidth: 1 }}
                     required
                   />
@@ -108,9 +88,10 @@ export default class Contact extends Component {
                   <label style={{ fontSize: 20 }}>Message:</label>
                   <textarea
                     type="text"
+                    name="message"
                     className="form-control"
-                    value={this.state.Message}
-                    onChange={this.onChangeMessage}
+                    value={this.state.message}
+                    onChange={this.onChange}
                     style={{ borderColor: "black", borderWidth: 1 }}
                     required
                   />
@@ -126,6 +107,7 @@ export default class Contact extends Component {
                       value="Add Feedback"
                       className="btn btn-success"
                       style={{ fontSize: 20 }}
+                      onClick={() => this.props.history.push("/contact")}
                     />
                   </center>
                 </div>
@@ -138,3 +120,5 @@ export default class Contact extends Component {
     );
   }
 }
+
+export default withRouter(Contact);

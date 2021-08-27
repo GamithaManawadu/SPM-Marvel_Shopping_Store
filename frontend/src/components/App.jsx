@@ -12,6 +12,7 @@ import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Admin from "../pages/Admin.dashboard";
+import Contact from "../pages/Contact";
 
 import EditCustomer from "../pages/Admin/customers/EditCustomer";
 import CustomerReport from "../pages/Admin/customers/Report";
@@ -20,7 +21,6 @@ import Admintable from "../pages/Admin/admins/Admintable";
 import Delivery from "../pages/DeliveryManager.dashboard";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
-import Contact from "../pages/Contact";
 
 const App = () => {
   return (
@@ -64,7 +64,6 @@ const App = () => {
 
         <PrivateRoute exact path="/auth/user/admin/dashboard">
           <Admin />
-        
         </PrivateRoute>
 
         <PrivateRoute exact path="/auth/user/delivery/dashboard">
@@ -73,10 +72,13 @@ const App = () => {
         <PrivateRoute exact path="/auth/user/customer/dashboard">
           <Customer />
         </PrivateRoute>
-		<PrivateRoute exact path="/auth/user/admin/dashboard">
-			<Admintable />
-		</PrivateRoute>
-        <PrivateStoreManagerRoute exact path="/auth/user/storemanager/dashboard">
+        <PrivateRoute exact path="/auth/user/admin/dashboard">
+          <Admintable />
+        </PrivateRoute>
+        <PrivateStoreManagerRoute
+          exact
+          path="/auth/user/storemanager/dashboard"
+        >
           <StoreManagerDashboard />
         </PrivateStoreManagerRoute>
       </Switch>
