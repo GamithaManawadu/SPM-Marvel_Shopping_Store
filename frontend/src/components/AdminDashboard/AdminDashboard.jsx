@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Count from "./count";
-import "./style/admin.css";
 import { BASE_URL } from "../../config/config";
 import "react-modern-drawer/dist/index.css";
 

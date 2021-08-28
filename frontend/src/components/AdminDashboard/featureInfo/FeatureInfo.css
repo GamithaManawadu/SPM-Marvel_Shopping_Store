@@ -11,13 +11,15 @@
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgb(185, 185, 185);
+    background-color: rgb(177, 167, 167);
     -webkit-shadow: 0px 0px 11px -1px #000000;
     box-shadow: 0px 0px 11px -1px #000000;
 }
 
 .featureTitle{
     font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
 }
 
 .featuredAmountContainer{
@@ -32,7 +34,7 @@
 }
 
 .featuredIcon{
-    font-size: 50px;
+    font-size: 90px;
     margin-left: 15px;
-    color: #000000;
+    color: #1b1818;
 }

@@ -6,7 +6,7 @@ import PeopleOutlineRoundedIcon from "@material-ui/icons/PeopleOutlineRounded";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 
 
-const Features = (props) => {
+const Features = () => {
   let [cCount, setCCount] = useState(0);
   let [Tcontent, setTcontent] = useState([]);
 

@@ -10,7 +10,7 @@
   height: 80px;
 
   max-width: 1900px;
-  background-color: rgb(240, 8, 8);
+  background-color: rgb(218, 12, 12);
   font-size: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -26,7 +26,7 @@ header {
   padding: 1rem 0;
   transition: all 0.5s ease-in-out;
   z-index: 20;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 nav a {
