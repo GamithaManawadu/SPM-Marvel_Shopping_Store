@@ -6,13 +6,24 @@ import PeopleOutlineRoundedIcon from "@material-ui/icons/PeopleOutlineRounded";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 
 
-export default function Features() {
+const Features = (props) => {
+  let [cCount, setCCount] = useState(0);
+  let [Tcontent, setTcontent] = useState([]);
+
+  useEffect(async () => {
+    const resCustomer = await fetch(`${BASE_URL}/admin/customercount`);
+    const customerData = await resCustomer.text();
+
+    setCCount(customerData);
+  }, []);
+  console.log(Tcontent);
+
   return (
     <div className="featured">
       <div className="featuredItem">
         <span className="featureTitle">REGISTERED CUSTOMERS</span>
         <div className="featuredAmountContainer">
-          <span className="featuredAmount">22</span>
+          <span className="featuredAmount"><Count customer={cCount} /></span>
           <PeopleOutlineRoundedIcon className="featuredIcon" />
         </div>
       </div>
@@ -27,4 +38,4 @@ export default function Features() {
   );
 };
 
-
+export default Features;

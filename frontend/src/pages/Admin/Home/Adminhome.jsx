@@ -12,9 +12,6 @@ const Adminhome = () => {
 
   return (
     <>
-      <div className="editor">
-        <AdminDashboard />
-  </div>
       <div className="home">
         <FeatureInfo />
         <div className="homeWidget">

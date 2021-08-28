@@ -1,5 +1,5 @@
 import React from 'react'
-import "./style/count.css"
+//import "./style/count.css"
 
 const count = (props) => {
 
