@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const User = props => (
@@ -51,7 +52,13 @@ export default class UsersList extends Component {
         this.setState({
             users: this.state.users.filter(el => el._id !== id)
         })
-        alert('Delete customer Successfully')
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Delete Admin successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
     }
 
     userList() {

@@ -7,12 +7,14 @@ import AdminDashboard from "../../../components/AdminDashboard/AdminDashboard";
 
 import "./home.css";
 
-export default function home() {
+const Adminhome = () => {
+  document.title = "MARVEL | Admin Manager";
+
   return (
     <>
-      <div className="editor">
+      {/*<div className="editor">
         <AdminDashboard />
-      </div>
+  </div>*/}
       <div className="home">
         <FeatureInfo />
         <div className="homeWidget">
@@ -23,4 +25,6 @@ export default function home() {
       </div>
     </>
   );
-}
+};
+
+export default Adminhome;
