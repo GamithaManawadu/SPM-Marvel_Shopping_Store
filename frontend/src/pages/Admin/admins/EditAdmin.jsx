@@ -133,10 +133,10 @@ export default class EditUser extends Component {
           <center>Update Admin</center>
         </h3>
         <button
-          class="btn btn-danger"
+          className="btn btn-danger"
           style={{ marginLeft: 15, marginBottom: 10 }}
         >
-          <Link to={"/admins"} style={{ textDecoration: "none" }}>
+          <Link to={"/auth/user/admin/admins"} style={{ textDecoration: "none" }}>
             Back
           </Link>
         </button>

@@ -10,7 +10,7 @@ const User = props => (
         <td className={props.user.completed ? 'completed' : ''}>{props.user.email}</td>
         <td className={props.user.completed ? 'completed' : ''}>{props.user.contact}</td>
         <td>
-            <button className="btn btn-warning" ><Link to={"/admin/edit/" + props.user._id}><i className="far fa-edit"></i></Link></button>
+            <button className="btn btn-warning" ><Link to={"/auth/user/admin/admins/edit/" + props.user._id}><i className="far fa-edit"></i></Link></button>
             <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><i className="far fa-trash-alt"></i></button>
         </td>
     </tr>
@@ -71,7 +71,7 @@ export default class UsersList extends Component {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
                 <h3><center>List of Admins</center></h3>
-                <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
+                <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
                 
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>

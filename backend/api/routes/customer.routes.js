@@ -3,7 +3,6 @@ const Customer = require("../models/customer.model")
 const router = express.Router();
 
 const {
-    getAllCustomers,
 	saveCustomer,
 	getCustomerDetails,
     deleteCustomer,
@@ -16,7 +15,6 @@ const verifyCustomerAuth = require("../auth/verifyCustomerAuth");
 
 router.get("/:id", verifyAdminAuth, getCustomerDetails);
 router.post("/register", saveCustomer);
-router.get("/", getAllCustomers);
 router.get("/my", verifyCustomerAuth, getCustomerDetails);
 router.post("/create", saveCustomer);
 router.delete("/:id", deleteCustomer);
@@ -59,8 +57,5 @@ router.route('/:id').delete(function(req, res) {
         .then(() => res.json('Data is deleted!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
-
-
 
 module.exports = router;

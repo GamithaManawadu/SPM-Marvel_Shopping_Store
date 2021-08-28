@@ -1,7 +1,9 @@
 .sidebar {
   flex: 1;
-  height: calc(100vh - 1px);
-  width: 100px;
+  height: calc(100vh - 10px);
+  width: 77px;
+  margin-left: -80px;
+  background-color: #ff9999;
   position: sticky;
   top: 50px;
 }
@@ -35,18 +37,13 @@
 }
 
 .sidebarIcon {
-  margin-right: 5px;
+  margin-left: -11px;
   font-size: 40px !important;
 }
 
 .sidebarIconRed {
-  margin-right: 5px;
+  margin-left: -11px;
   font-size: 40px !important;
   color: red;
 }
 
-.sidebarIconBlack {
-  margin-right: 5px;
-  font-size: 40px !important;
-  color: black;
-}
