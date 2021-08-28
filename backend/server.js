@@ -26,23 +26,20 @@ const PORT = process.env.PORT || 3000;
 dotenv.config();
 
 mongoose
-	.connect(process.env.CONNECTION_URL, {
-		useCreateIndex: true,
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-	})
-	.then(() => {
-		app.listen(PORT, () =>
-			console.log(`mongodb synced and listening on port ${PORT}`)
-		);
-	})
-	.catch((error) => {
-		console.log(error.message);
-	});
-
-	app.get("/", (request, response) => {
-		response.send(
-			"MARVEL FASHION"
-		);
-	});
+  .connect(process.env.CONNECTION_URL, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`mongodb synced and listening on port ${PORT}`)
+    );
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
+app.get("/", (request, response) => {
+  response.send("MARVEL FASHION");
+});

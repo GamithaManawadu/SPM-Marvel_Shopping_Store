@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from "../../../config/config";
 import {getUserToken} from '../../../auth/userAuth';
+import './Customer.css';
 
 
 
@@ -15,7 +16,7 @@ const User = props => (
         <td className={props.user.completed ? 'completed' : ''}>{props.user.contactNumber}</td>
         <td className={props.user.completed ? 'completed' : ''}>{props.user.address}</td>
         <td>
-            <button className="btn btn-warning" ><Link to={"/auth/user/admin/customer/edit/" + props.user._id}><i className="far fa-edit"></i></Link>Edit</button>
+        <button className="btn btn-warning" ><Link to={"/auth/user/admin/customer/edit/" + props.user._id}><i className="far fa-edit"></i></Link>Edit</button>
             <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><i className="far fa-trash-alt"></i>Remove</button>
         </td>
     </tr>

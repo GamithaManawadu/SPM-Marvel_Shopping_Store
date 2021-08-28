@@ -2,8 +2,6 @@ const Customer = require("../models/customer.model");
 const { hashPassword } = require("../helpers/passwordHash");
 const bcrypt = require("bcryptjs");
 
-
-
 const getAllCustomers = async (req, res) => {
 	try {
 		const allcustomers = await Customer.find();
@@ -13,10 +11,6 @@ const getAllCustomers = async (req, res) => {
 		return res.status(500).send();
 	}
 };
-
-
-
-
 
 const saveCustomer = async (request, response) => {
 	if (request.body) {

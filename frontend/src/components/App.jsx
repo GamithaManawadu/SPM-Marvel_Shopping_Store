@@ -24,7 +24,7 @@ import Delivery from "../pages/DeliveryManager.dashboard";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
 import Adminhome from "../pages/Admin/Home/Adminhome";
-import Feedback from "../pages/Admin/feedbacks/Feedback"
+import Feedback from "../pages/Admin/feedbacks/Feedback";
 
 const App = () => {
   return (
@@ -54,10 +54,10 @@ const App = () => {
         </PrivateRoute>
       </Switch>
       <Switch>
-        <Route exact path="/auth/user/admin/dashboard">
+        <PrivateRoute exact path="/auth/user/admin/dashboard">
           <Sidebar />
           <Adminhome />
-        </Route>
+        </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/customers">
           <Sidebar />
           <Customers />
@@ -70,14 +70,6 @@ const App = () => {
           <Sidebar />
           <CustomerReport />
         </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/admin/dashboard">
-          <Sidebar />
-          <Adminhome />
-        </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/delivery/dashboard">
-          <Sidebar />
-          <Delivery />
-        </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/admins">
           <Sidebar />
           <Admintable />
@@ -86,7 +78,7 @@ const App = () => {
           <Sidebar />
           <EditAdmin />
         </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/admin/edit/:id">
+        <PrivateRoute exact path="/auth/user/admin/report">
           <Sidebar />
           <AdminReport />
         </PrivateRoute>
@@ -94,10 +86,17 @@ const App = () => {
           <Sidebar />
           <Feedback />
         </PrivateRoute>
-        <PrivateStoreManagerRoute exact path="/auth/user/storemanager/dashboard">
+        <PrivateStoreManagerRoute
+          exact
+          path="/auth/user/storemanager/dashboard"
+        >
           <Sidebar />
           <StoreManagerDashboard />
         </PrivateStoreManagerRoute>
+        <PrivateRoute exact path="/auth/user/delivery/dashboard">
+          <Sidebar />
+          <Delivery />
+        </PrivateRoute>
       </Switch>
     </Router>
   );

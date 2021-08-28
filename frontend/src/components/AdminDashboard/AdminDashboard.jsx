@@ -5,7 +5,6 @@ import { BASE_URL } from "../../config/config";
 import "react-modern-drawer/dist/index.css";
 
 const AdminDashboard = () => {
-
   let [cCount, setCCount] = useState(0);
   let [Tcontent, setTcontent] = useState([]);
 
@@ -19,11 +18,8 @@ const AdminDashboard = () => {
   return (
     <>
       <div style={{ marginBottom: "100px" }}>
-      
         <Count customer={cCount} />
       </div>
-
-      
     </>
   );
 };
