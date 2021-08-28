@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./sidebar.css"
 import {Home, PersonOutlineRounded, ExitToAppRounded, SupervisedUserCircleRounded, FeedbackRounded, LocalShippingRounded, LocalMallRounded } from "@material-ui/icons";
 
-export default function sidebar() {
+import { deleteUserAuth, getUserType } from "../../../auth/userAuth";
+import { RegisterDataContext } from "../../../context/RegisterFormContext";
+
+const Sidebar = () => {
+    const { isLogin, setIsLogin } = useContext(RegisterDataContext);
+
     return (
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -27,11 +32,15 @@ export default function sidebar() {
                             <a href="/auth/user/admin/feedbacks" variant="body2" className="nav-link" style={{ textDecoration: 'none' }}><FeedbackRounded className="sidebarIcon" /></a>
                         </li>
                         <li className="sidebarListItem">
-                            <a href="/" variant="body2" className="nav-link" style={{ textDecoration: 'none' }}><ExitToAppRounded className="sidebarIconRed" /></a>
+                            <a href="/" onClick={() => { deleteUserAuth(); 
+                                                        setIsLogin(false);
+							                    }} variant="body2" className="nav-link" style={{ textDecoration: 'none' }}><ExitToAppRounded className="sidebarIconRed" /></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default Sidebar;
