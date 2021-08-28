@@ -12,9 +12,9 @@ const Adminhome = () => {
 
   return (
     <>
-      {/*<div className="editor">
+      <div className="editor">
         <AdminDashboard />
-  </div>*/}
+  </div>
       <div className="home">
         <FeatureInfo />
         <div className="homeWidget">
