@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from "../../../config/config";
 import {getUserToken} from '../../../auth/userAuth';
-import './Customer.css';
 
 
 
