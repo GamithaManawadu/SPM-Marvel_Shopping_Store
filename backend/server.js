@@ -7,6 +7,7 @@ const customerRoutes = require("./api/routes/customer.routes");
 const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
 const feedbackRoutes = require("./api/routes/feedback.routes");
+const productRoutes = require("./api/routes/product");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/customer", customerRoutes);
 app.use("/auth", commonRoutes);
 app.use("/admin", adminRoutes);
 app.use("/feedback", feedbackRoutes);
+app.use("/product", productRoutes);
 
 const PORT = process.env.PORT || 3000;
 dotenv.config();
