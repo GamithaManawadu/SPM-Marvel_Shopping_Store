@@ -137,7 +137,7 @@ export default class EditUser extends Component {
     render() {
         return (
             <div style={{ marginTop: 50, marginRight: 400, marginLeft: 400 }}>
-                <h3><center>Update Customer</center></h3>
+                <h3 style={{ fontWeight: 1000 }}><center>Update Customer</center></h3>
                 <button class="btn btn-danger" style={{ marginLeft: 15, marginBottom: 10 }} ><Link to={"/auth/user/admin/customers"} style={{ textDecoration: 'none' }}>Back</Link></button>
                 <div className="container">
                     <form onSubmit={this.onSubmit}>
