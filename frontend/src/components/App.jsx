@@ -21,6 +21,9 @@ import Admintable from "../pages/Admin/admins/Admintable";
 import EditAdmin from "../pages/Admin/admins/EditAdmin";
 import AdminReport from "../pages/Admin/admins/Report";
 import Delivery from "../pages/DeliveryManager.dashboard";
+import AddDeliveryService from "../pages/DeliveryManager.addDeliveryService";
+import DeliveryServices from "../pages/DeliveryManager.deliveryServices";
+import CustomerDelivery from "../pages/DeliveryManager.checkout";
 import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
 import Adminhome from "../pages/Admin/Home/Adminhome";
@@ -94,9 +97,18 @@ const App = () => {
           <StoreManagerDashboard />
         </PrivateStoreManagerRoute>
         <PrivateRoute exact path="/auth/user/delivery/dashboard">
-          <Sidebar />
-          <Delivery />
-        </PrivateRoute>
+					<Delivery />
+          {/* <Sidebar /> */}
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/delivery/add/deliveryservice">
+					<AddDeliveryService />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/delivery/deliveryservices">
+					<DeliveryServices />
+				</PrivateRoute>
+				<PrivateRoute exact path="/auth/user/delivery/customer/deliveryservices">
+					<CustomerDelivery />
+				</PrivateRoute>
       </Switch>
     </Router>
   );
