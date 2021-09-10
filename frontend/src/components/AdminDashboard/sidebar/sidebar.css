@@ -1,9 +1,9 @@
 .sidebar {
-  flex: 1;
   height: calc(100vh - 10px);
   width: 75px;
   margin-left: -80px;
-  background-color: #a19494;
+  background-color: #dd242463;
+  float:left;
   position: sticky;
   top: 50px;
 }

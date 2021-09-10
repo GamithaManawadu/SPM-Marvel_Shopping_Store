@@ -19,7 +19,7 @@ const Features = () => {
   console.log(Tcontent);
 
   return (
-    <div className="featured">
+    <div className="featured" style={{ marginBottom: 30}}>
       <div className="featuredItem">
         <span className="featureTitle">REGISTERED CUSTOMERS</span>
         <div className="featuredAmountContainer">
