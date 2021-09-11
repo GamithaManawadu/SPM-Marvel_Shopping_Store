@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default class EditUser extends Component {
+
   constructor(props) {
     super(props);
 
@@ -19,12 +20,11 @@ export default class EditUser extends Component {
 
       emailError: "",
       contactError: "",
-    };
+    }
   }
 
   componentDidMount() {
-    axios
-      .get("http://localhost:3000/admin/" + this.props.id)
+    axios.get("http://localhost:3000/admin/" +this.props.match.params.id)
       .then((response) => {
         this.setState({
           username: response.data.username,
@@ -33,7 +33,7 @@ export default class EditUser extends Component {
         });
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error)
       });
   }
 
