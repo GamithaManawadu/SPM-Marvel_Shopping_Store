@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { BASE_URL } from "../../../config/config";
-import {getUserToken} from '../../../auth/userAuth';
 import './Customer.css'
 
 
@@ -76,7 +74,7 @@ export default class CustomersList extends Component {
     render() {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
-                <h3><center>List of Customers</center></h3>
+                <h3 style={{ fontWeight: 1000 }}><center>List of Customers</center></h3>
                 <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/customer/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
                 
                 <table className="table table-striped" style={{ marginTop: 20 }}>

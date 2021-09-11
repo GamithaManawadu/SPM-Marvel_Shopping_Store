@@ -60,7 +60,7 @@ export default class FeedbacksList extends Component {
     render() {
         return (
             <div style={{ marginTop: 30, width: '100%' }}>
-                <h3><center>List of Feedbacks</center></h3>
+                <h3 style={{ fontWeight: 1000 }}><center>List of Feedbacks</center></h3>
                 <table className="table table-striped" style={{ marginTop: 40 }}>
                     <thead>
                         <tr>

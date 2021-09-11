@@ -129,7 +129,7 @@ export default class EditUser extends Component {
   render() {
     return (
       <div style={{ marginTop: 50, marginRight: 400, marginLeft: 400 }}>
-        <h3>
+        <h3 style={{ fontWeight: 1000 }}>
           <center>Update Admin</center>
         </h3>
         <button

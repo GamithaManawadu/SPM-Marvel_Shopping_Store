@@ -70,7 +70,7 @@ export default class UsersList extends Component {
     render() {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
-                <h3><center>List of Admins</center></h3>
+                <h3 style={{ fontWeight: 1000 }}><center>List of Admins</center></h3>
                 <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
                 
                 <table className="table table-striped" style={{ marginTop: 20 }}>

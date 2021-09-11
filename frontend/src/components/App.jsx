@@ -62,7 +62,7 @@ const App = () => {
           <Adminhome />
         </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/customers">
-        <Sidebar />
+          <Sidebar />
           <Customers />
         </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/customer/edit/:id">
