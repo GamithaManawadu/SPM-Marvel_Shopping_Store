@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
 const Feedback = props => (
     <tr>
         <td className={props.feedback.completed ? 'completed' : ''}>{props.feedback.email}</td>
         <td className={props.feedback.completed ? 'completed' : ''}>{props.feedback.message}</td>
         <td>
-            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteFeedback(props.feedback._id) }}><i className="far fa-trash-alt"></i></button>
+            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteFeedback(props.feedback._id) }}><DeleteForeverRoundedIcon/></button>
         </td>
     </tr>
 )
