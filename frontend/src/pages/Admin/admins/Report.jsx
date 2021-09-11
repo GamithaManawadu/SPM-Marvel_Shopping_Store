@@ -87,9 +87,9 @@ export default class ReportList extends Component {
         return (
             <div className="container" style={{ marginTop: 20, marginLeft: 100, marginRight: 100 }}>
                 <h5 style={{ marginLeft: 10, fontWeight: 1000 }}>Generate pdf file from here</h5>
-                <button style={{ marginLeft: 10 }} className="btn btn-success" onClick={() => this.exportPDF()} >Download Admin Details</button>
-                <button class="btn btn-danger" style={{ marginLeft: 900, marginBottom: 10 }} ><Link to={"/auth/user/admin/admins"} style={{ textDecoration: 'none' }} >Back</Link></button>
-                <div className="col-lg-4 mt-2 mb-3" style={{ marginLeft: 10 }}>
+                <button style={{ marginLeft: 20 }} className="btn btn-success" onClick={() => this.exportPDF()} >Download Admin Details</button>
+                <button className="btn btn-danger" style={{ marginLeft: 994, marginBottom: 10 }} ><Link to={"/auth/user/admin/admins"} style={{ textDecoration: 'none' }} >Back</Link></button>
+                <div className="col-lg-4 mt-2 mb-3" style={{ marginLeft: 20 }}>
                     <input
                         className="form-control"
                         type="search"

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 export default class EditUser extends Component {
   constructor(props) {
@@ -63,9 +63,9 @@ export default class EditUser extends Component {
       contactError: "",
     };
 
-    if(this.state.email.indexOf("@") === -1){
-        isError = true;
-        errors.emailError = "Require Valid Email Address";
+    if (this.state.email.indexOf("@") === -1) {
+      isError = true;
+      errors.emailError = "Require Valid Email Address";
     }
 
     if (this.state.contact.length < 10) {
@@ -128,7 +128,18 @@ export default class EditUser extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 50, marginRight: 400, marginLeft: 400 }}>
+      <div
+        style={{
+          width: 670,
+          borderRadius: 5,
+          paddingBottom: 20,
+          paddingTop: 20,
+          backgroundColor: "#e3e4e6",
+          marginTop: 50,
+          marginRight: 400,
+          marginLeft: 400,
+        }}
+      >
         <h3 style={{ fontWeight: 1000 }}>
           <center>Update Admin</center>
         </h3>
@@ -136,7 +147,10 @@ export default class EditUser extends Component {
           className="btn btn-danger"
           style={{ marginLeft: 15, marginBottom: 10 }}
         >
-          <Link to={"/auth/user/admin/admins"} style={{ textDecoration: "none" }}>
+          <Link
+            to={"/auth/user/admin/admins"}
+            style={{ textDecoration: "none" }}
+          >
             Back
           </Link>
         </button>
@@ -190,7 +204,7 @@ export default class EditUser extends Component {
 
             <div
               className="form-group"
-              style={{ marginLeft: 475, marginTop: 30 }}
+              style={{ marginLeft: 420, marginTop: 30 }}
             >
               <input
                 type="submit"
