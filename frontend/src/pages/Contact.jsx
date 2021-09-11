@@ -62,7 +62,7 @@ class Contact extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 25 }}>
+      <div>
         <div
           className="container"
           style={{
@@ -94,7 +94,7 @@ class Contact extends Component {
 
                 <div
                   className="form-group"
-                  style={{ marginTop: 20, marginTop: 20 }}
+                  style={{ marginTop: 20 }}
                 >
                   <label style={{ fontSize: 20 }}>Message:</label>
                   <textarea
