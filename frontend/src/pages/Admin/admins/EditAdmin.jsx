@@ -24,7 +24,7 @@ export default class EditUser extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:3000/admin/" + this.props.match.params.id)
+      .get("http://localhost:3000/admin/" + this.props.id)
       .then((response) => {
         this.setState({
           username: response.data.username,

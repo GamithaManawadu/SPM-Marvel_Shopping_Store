@@ -22,7 +22,7 @@ export default class UsersList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { users: [] };
+        this.state = { users: []};
 
         this.deleteCustomer = this.deleteCustomer.bind(this);
     }
@@ -73,8 +73,7 @@ export default class UsersList extends Component {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
                 <h3 style={{ fontWeight: 1000 }}><center>List of Admins</center></h3>
-                <button className="btn btn-secondary" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
-                
+                <button className="btn btn-secondary" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>                
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
