@@ -1,7 +1,8 @@
 .chart{
     flex: 5;
     margin: 20px;
-    padding: 20px 20px 310px 20px;
+    padding: 20px;
+    background-color: rgb(175, 141, 5);
     border-radius: 10px;
     -webkit-shadow: 0px 0px 11px -1px #000000;
     box-shadow: 0px 0px 11px -1px #000000;

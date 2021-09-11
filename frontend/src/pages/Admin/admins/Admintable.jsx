@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
 
 const User = props => (
@@ -10,8 +12,8 @@ const User = props => (
         <td className={props.user.completed ? 'completed' : ''}>{props.user.email}</td>
         <td className={props.user.completed ? 'completed' : ''}>{props.user.contact}</td>
         <td>
-            <button className="btn btn-warning" ><Link to={"/auth/user/admin/admins/edit/" + props.user._id}><i className="far fa-edit"></i></Link></button>
-            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><i className="far fa-trash-alt"></i></button>
+            <button className="btn btn-warning" ><Link to={"/auth/user/admin/admins/edit/" + props.user._id}><EditRoundedIcon/></Link></button>
+            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><DeleteForeverRoundedIcon/></button>
         </td>
     </tr>
 )
@@ -20,7 +22,7 @@ export default class UsersList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { users: [] };
+        this.state = { users: []};
 
         this.deleteCustomer = this.deleteCustomer.bind(this);
     }
@@ -71,8 +73,7 @@ export default class UsersList extends Component {
         return (
             <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
                 <h3 style={{ fontWeight: 1000 }}><center>List of Admins</center></h3>
-                <button className="btn btn-dark" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>
-                
+                <button className="btn btn-secondary" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>                
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
