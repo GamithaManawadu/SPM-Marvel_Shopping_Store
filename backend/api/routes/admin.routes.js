@@ -21,7 +21,7 @@ Router.get("/:id", (req, res) => {
   
   Admin.findById(id, function (err, user){
     if (err) return res.json({ success: false, err });
-    return res.json({ success: true, user});
+    return res.json({ success: true, user });
   });
 });
 
