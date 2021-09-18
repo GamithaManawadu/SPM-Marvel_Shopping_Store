@@ -1,220 +1,146 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { setErrors } from "./setErrors";
+import { withRouter } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default class EditUser extends Component {
-
+class EditAdmin extends Component {
   constructor(props) {
     super(props);
-
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeContact = this.onChangeContact.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
     this.state = {
       username: "",
       email: "",
       contact: "",
-
-      emailError: "",
-      contactError: "",
-    }
+      errors: {},
+    };
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3000/admin/" +this.props.match.params.id)
-      .then((response) => {
+    const id = this.props.match.params.id;
+    console.log(this.props.match.params.id);
+    axios.get(`http://localhost:3000/admin/${id}`).then((res) => {
+      if (res.data.success) {
         this.setState({
-          username: response.data.username,
-          email: response.data.email,
-          contact: response.data.contact,
+          username: res.data.user.username,
+          email: res.data.user.email,
+          contact: res.data.user.contact,
         });
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
-  }
-
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
-
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value,
-    });
-  }
-
-  onChangeContact(e) {
-    this.setState({
-      contact: e.target.value,
-    });
-  }
-
-  validate = () => {
-    let isError = false;
-
-    const errors = {
-      emailError: "",
-      contactError: "",
-    };
-
-    if (this.state.email.indexOf("@") === -1) {
-      isError = true;
-      errors.emailError = "Require Valid Email Address";
-    }
-
-    if (this.state.contact.length < 10) {
-      isError = true;
-      errors.contactError = "Mobile Number must be at least 10 numbers";
-    }
-
-    if ("contact" !== "undefined") {
-      var pattern = new RegExp(/^[0-9\b]+$/);
-      if (!pattern.test(this.state.contact)) {
-        isError = true;
-        errors.contactError = "Please enter only number.";
-      } else if (this.state.contact.length < 10) {
-        isError = true;
-        errors.contactError = "Please enter valid phone number.";
       }
-    }
+    });
+  }
 
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
     this.setState({
       ...this.state,
-      ...errors,
+      [name]: value,
     });
-
-    return isError;
   };
 
-  onSubmit(e) {
-    e.preventDefault();
+  validate = (email, contact) => {
+    const errors = setErrors(email, contact);
+    this.setState({ errors: errors });
+    return Object.values(errors).every((err) => err === "");
+  };
 
-    const obj = {
-      username: this.state.username,
-      email: this.state.email,
-      contact: this.state.contact,
-    };
-    axios
-      .post(
-        "http://localhost:3000/admin/update/" + this.props.match.params.id,
-        obj
-      )
-      .then((res) => {
-        console.log(res.data);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Edit Admin successfully!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.props.history.push("/admins");
-      })
-      .catch((err) => {
-        console.log(console.err.message);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
+  onSubmit = (e) => {
+    e.preventDefault();
+    const id = this.props.match.params.id;
+    const { username, email, contact } = this.state;
+    if (this.validate(email, contact)) {
+      const data = {
+        username: username,
+        email: email,
+        contact: contact,
+      };
+      console.log(data);
+      axios.put(`http://localhost:3000/admin/${id}`, data).then((res) => {
+        if (res.data.success) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Edit Admin successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.props.history.push("/auth/user/admin/admins/");
+        }
       });
-  }
+    }
+  };
 
   render() {
     return (
       <div
+        className="container"
         style={{
-          width: 670,
+          width: 900,
+          backgroundColor: "#a39d9d",
           borderRadius: 5,
           paddingBottom: 20,
           paddingTop: 20,
-          backgroundColor: "#e3e4e6",
-          marginTop: 50,
-          marginRight: 400,
-          marginLeft: 400,
         }}
       >
-        <h3 style={{ fontWeight: 1000 }}>
-          <center>Update Admin</center>
-        </h3>
-        <button
-          className="btn btn-danger"
-          style={{ marginLeft: 15, marginBottom: 10 }}
-        >
-          <Link
-            to={"/auth/user/admin/admins"}
-            style={{ textDecoration: "none" }}
-          >
-            Back
-          </Link>
-        </button>
-        <div className="container">
-          <form onSubmit={this.onSubmit}>
-            <div
-              className="form-group"
-              style={{ marginTop: 20, marginBottom: 20 }}
-            >
-              <label>Username:</label>
+        <div className="col-md-10 mt-3 mx-auto">
+          <h1 className="h3 mb-3 font-weight-bold">
+            <center>Edit Admin</center>
+          </h1>
+          <form className="needs-validation" noValidate>
+            <div className="form-group">
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
+                name="username"
+                placeholder="Enter Username"
                 value={this.state.username}
-                onChange={this.onChangeUsername}
+                onChange={this.handleInputChange}
                 disabled
               />
-              <span className="text-danger">{this.state.nameError}</span>
             </div>
 
-            <div
-              className="form-group"
-              style={{ marginTop: 20, marginBottom: 20 }}
-            >
-              <label>Email Address:</label>
+            <div className="form-group">
+              <label>Email Address</label>
               <input
                 type="email"
                 className="form-control"
+                name="email"
+                placeholder="Enter Email Address"
                 value={this.state.email}
-                onChange={this.onChangeEmail}
-                required
+                onChange={this.handleInputChange}
               />
+              {this.state.errors.email && (
+                <div className="text-danger">{this.state.errors.email}</div>
+              )}
             </div>
 
-            <div
-              className="form-group"
-              style={{ marginTop: 20, marginBottom: 20 }}
-            >
-              <label>Mobile Number:</label>
+            <div className="form-group">
+              <label>Mobile Number</label>
               <input
                 type="text"
                 className="form-control"
+                name="contact"
+                placeholder="Enter Mobile Number"
                 value={this.state.contact}
-                onChange={this.onChangeContact}
-                required
+                onChange={this.handleInputChange}
               />
-              <span className="text-danger">{this.state.contactError}</span>
+              {this.state.errors.contact && (
+                <div className="text-danger">{this.state.errors.contact}</div>
+              )}
             </div>
 
-            <br />
-
-            <div
-              className="form-group"
-              style={{ marginLeft: 420, marginTop: 30 }}
+            <button
+              className="btn btn-success"
+              type="submit"
+              onClick={this.onSubmit}
             >
-              <input
-                type="submit"
-                value="Update Admin"
-                className="btn btn-success"
-              />
-            </div>
+              Update
+            </button>
           </form>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(EditAdmin);
