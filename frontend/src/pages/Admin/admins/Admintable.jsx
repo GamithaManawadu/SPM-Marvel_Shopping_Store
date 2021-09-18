@@ -54,13 +54,7 @@ export default class UsersList extends Component {
         this.setState({
             users: this.state.users.filter(el => el._id !== id)
         })
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Delete Admin successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+        alert('Delete admin Successfully')
     }
 
     userList() {
