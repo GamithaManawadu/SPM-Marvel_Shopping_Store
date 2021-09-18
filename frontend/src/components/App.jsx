@@ -19,7 +19,6 @@ import CustomerReport from "../pages/Admin/customers/Report";
 import Customers from "../pages/Admin/customers/Customer";
 import Admintable from "../pages/Admin/admins/Admintable";
 import EditAdmin from "../pages/Admin/admins/EditAdmin";
-import AdminReport from "../pages/Admin/admins/Report";
 import Delivery from "../pages/DeliveryManager.dashboard";
 import AddDeliveryService from "../pages/DeliveryManager.addDeliveryService";
 import DeliveryServices from "../pages/DeliveryManager.deliveryServices";
@@ -81,10 +80,6 @@ const App = () => {
           <Sidebar />
           <EditAdmin />
         </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/admin/report">
-          <Sidebar />
-          <AdminReport />
-        </PrivateRoute>
         <PrivateRoute exact path="/auth/user/admin/feedbacks">
           <Sidebar />
           <Feedback />
@@ -97,18 +92,21 @@ const App = () => {
           <StoreManagerDashboard />
         </PrivateStoreManagerRoute>
         <PrivateRoute exact path="/auth/user/delivery/dashboard">
-					<Delivery />
+          <Delivery />
           {/* <Sidebar /> */}
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/delivery/add/deliveryservice">
-					<AddDeliveryService />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/delivery/deliveryservices">
-					<DeliveryServices />
-				</PrivateRoute>
-				<PrivateRoute exact path="/auth/user/delivery/customer/deliveryservices">
-					<CustomerDelivery />
-				</PrivateRoute>
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/delivery/add/deliveryservice">
+          <AddDeliveryService />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/delivery/deliveryservices">
+          <DeliveryServices />
+        </PrivateRoute>
+        <PrivateRoute
+          exact
+          path="/auth/user/delivery/customer/deliveryservices"
+        >
+          <CustomerDelivery />
+        </PrivateRoute>
       </Switch>
     </Router>
   );

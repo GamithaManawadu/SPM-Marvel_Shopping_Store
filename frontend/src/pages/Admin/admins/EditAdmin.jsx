@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { setErrors } from "./setErrors";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import Swal from "sweetalert2";
 
 class EditAdmin extends Component {
@@ -14,7 +14,7 @@ class EditAdmin extends Component {
       errors: {},
     };
   }
-  
+
   componentDidMount() {
     const id = this.props.match.params.id;
     console.log(this.props.match.params.id);
@@ -63,7 +63,7 @@ class EditAdmin extends Component {
             showConfirmButton: false,
             timer: 1500,
           });
-          this.props.history.push('/auth/user/admin/admins/');
+          this.props.history.push("/auth/user/admin/admins/");
         }
       });
     }
@@ -82,7 +82,9 @@ class EditAdmin extends Component {
         }}
       >
         <div className="col-md-10 mt-3 mx-auto">
-          <h1 className="h3 mb-3 font-weight-bold">Edit Admin</h1>
+          <h1 className="h3 mb-3 font-weight-bold">
+            <center>Edit Admin</center>
+          </h1>
           <form className="needs-validation" noValidate>
             <div className="form-group">
               <label>Username</label>

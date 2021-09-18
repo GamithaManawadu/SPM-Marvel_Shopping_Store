@@ -53,10 +53,10 @@ class Contact extends Component {
       .catch((err) => {
         console.log(console.err.message);
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        })
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
   };
 
@@ -92,10 +92,7 @@ class Contact extends Component {
                   />
                 </div>
 
-                <div
-                  className="form-group"
-                  style={{ marginTop: 20 }}
-                >
+                <div className="form-group" style={{ marginTop: 20 }}>
                   <label style={{ fontSize: 20 }}>Message:</label>
                   <textarea
                     type="text"

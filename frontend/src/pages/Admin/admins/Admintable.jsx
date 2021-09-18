@@ -4,6 +4,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import EditRoundedIcon from "@material-ui/icons/EditRounded";
 import DeleteForeverRoundedIcon from "@material-ui/icons/DeleteForeverRounded";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 export default class Admintable extends Component {
   constructor(props) {
@@ -28,8 +30,8 @@ export default class Admintable extends Component {
     });
   }
 
-  onDelete =(id) => {
-    axios.delete(`http://localhost:3000/admin/${id}`).then((res)=>{
+  onDelete = (id) => {
+    axios.delete(`http://localhost:3000/admin/${id}`).then((res) => {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -42,8 +44,10 @@ export default class Admintable extends Component {
   };
 
   filterData(users, searchKey) {
-    const result = users.filter((users) =>
-      users.email.toLowerCase().includes(searchKey)
+    const result = users.filter(
+      (users) =>
+        users.email.toLowerCase().includes(searchKey) ||
+        users.username.toLowerCase().includes(searchKey)
     );
     this.setState({ users: result });
   }
@@ -58,12 +62,45 @@ export default class Admintable extends Component {
     });
   };
 
+  //Report generation part starting from here
+
+  exportPDF = () => {
+    const unit = "pt";
+    const size = "A3"; // Use A1, A2, A3 or A4
+    const orientation = "landscape"; // portrait or landscape
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    const title = "Marvel Admin Report ";
+    const headers = [["Username", "Email Address", "Mobile Number"]];
+
+    const users = this.state.users.map((users) => [
+      users.username,
+      users.email,
+      users.contact,
+    ]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: users,
+    };
+
+    doc.setFontSize(25);
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("AdminList.pdf");
+  };
+
   render() {
     return (
       <div className="container">
-        <p>All Admins</p>
-        <div className="col-lg-4 mt-2 mb-3" style={{ marginLeft: 20 }}>
+        <h1 className="h3 mb-3 font-weight-bold">
+          <center>List of Admins</center>
+        </h1>
+        <div className="col-lg-4 mt-2 mb-3">
           <input
+            style={{ backgroundColor: "#e0dfda" }}
             className="form-control"
             type="search"
             placeholder="Search "
@@ -71,14 +108,13 @@ export default class Admintable extends Component {
             onChange={this.handleTextSearch}
           />
         </div>
-        {/*<button className="btn btn-secondary">
-          <Link
-            to={"/auth/user/admin/report"}
-            style={{ textDecoration: "none" }}
-          >
-            Generate Report
-          </Link>
-    </button>*/}
+        <button
+          style={{ marginLeft: 20 }}
+          className="btn btn-success"
+          onClick={() => this.exportPDF()}
+        >
+          Download Admin Details
+        </button>
         <table className="table">
           <thead>
             <tr>
@@ -104,7 +140,11 @@ export default class Admintable extends Component {
                     <EditRoundedIcon />
                   </a>
                   &nbsp;
-                  <a className="btn btn-danger" href="#" onClick={() => this.onDelete(user._id)}>
+                  <a
+                    className="btn btn-danger"
+                    href="#"
+                    onClick={() => this.onDelete(user._id)}
+                  >
                     <DeleteForeverRoundedIcon />
                   </a>
                 </td>
