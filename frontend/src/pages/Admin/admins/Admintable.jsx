@@ -1,87 +1,67 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 import Swal from 'sweetalert2';
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
-
-const User = props => (
-    <tr>
-        <td className={props.user.completed ? 'completed' : ''}>{props.user.username}</td>
-        <td className={props.user.completed ? 'completed' : ''}>{props.user.email}</td>
-        <td className={props.user.completed ? 'completed' : ''}>{props.user.contact}</td>
-        <td>
-            <button className="btn btn-warning" ><Link to={"/auth/user/admin/admins/edit/" + props.user._id}><EditRoundedIcon/></Link></button>
-            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteCustomer(props.user._id) }}><DeleteForeverRoundedIcon/></button>
-        </td>
-    </tr>
-)
-
 export default class UsersList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = { users: []};
+  componentDidMount() {
+    this.getUsers();
+  }
 
-        this.deleteCustomer = this.deleteCustomer.bind(this);
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:3000/admin/')
-            .then(response => {
-                this.setState({ users: response.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    componentDidUpdate() {
-        axios.get('http://localhost:3000/admin/')
-            .then(response => {
-                this.setState({ users: response.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    deleteCustomer(id) {
-        axios.delete('http://localhost:3000/admin/' + id)
-            .then(res => { console.log(res.data) });
-
+  getUsers() {
+    axios.get("http://localhost:3000/admin").then((res) => {
+      if (res.data.success) {
         this.setState({
-            users: this.state.users.filter(el => el._id !== id)
-        })
-        alert('Delete admin Successfully')
-    }
+          users: res.data.users,
+        });
+        console.log(this.state.users);
+      }
+    });
+  }
 
-    userList() {
-        return this.state.users.map(currentUser => {
-            return <User user={currentUser} deleteCustomer={this.deleteCustomer} key={currentUser.id} />;
-        })
-    }
-
-    render() {
-        return (
-            <div style={{ marginTop: 20, marginLeft: 20, width: '100%' }}>
-                <h3 style={{ fontWeight: 1000 }}><center>List of Admins</center></h3>
-                <button className="btn btn-secondary" style={{ marginLeft: 1200 }} ><Link to={"/auth/user/admin/report"} style={{ textDecoration: 'none' }}>Generate Report</Link></button>                
-                <table className="table table-striped" style={{ marginTop: 20 }}>
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email Address</th>
-                            <th>Mobile Number</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.userList()}
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="container">
+        <p>All Admins</p>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Username</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+              {this.state.users.map((user, index) => (
+                <tr>
+                  <th scope="row">{index+1}</th>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.contact}</td>
+                  <td>
+                      <a className="btn btn-warning" href="#">
+                        <EditRoundedIcon/>
+                      </a>
+                      &nbsp;
+                      <a className="btn btn-danger" href="#">
+                        <DeleteForeverRoundedIcon/>
+                      </a>
+                  </td>
+              </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }

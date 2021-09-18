@@ -8,48 +8,45 @@ const { customersCount } = require("../controllers/admin.controller");
 Router.get("/customercount", customersCount);
 
 //get all admins
-Router.route("/").get(function (req, res) {
-  Admin.find(function (err, users) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(users);
-    }
+Router.get("/", (req, res) => {
+  Admin.find().exec((err, users) => {
+    if (err) return res.status(400).json({ success: false, err });
+    return res.status(200).json({ success: true, users: users });
   });
 });
 
 //get a admin
-Router.route('/:id').get(function(req, res){
+Router.get("/:id", (req, res) => {
   let id = req.params.id;
-  Admin.findById(id, function(err, user){
-      res.json(user);
+  
+  Admin.findById(id, function (err, user){
+    if (err) return res.json({ success: false, err });
+    return res.json({ success: true, user});
   });
 });
 
 //update a admin
-Router.route('/update/:id').post(function(req, res) {
-  Admin.findById(req.params.id, function(err, user) {
-      if (!user)
-          res.status(404).send('data is not found');
-      else
-          user.username = req.body.username;
-          user.email = req.body.email;
-          user.contact = req.body.contact;
-
-          user.save().then(user => {
-              res.json('User updated');
-          })
-          .catch(err => {
-              res.status(400).send("Update not possible");
-          });
-  });
+Router.put("/:id", (req, res) => {
+  Admin.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: req.body,
+    },
+    (err, user) => {
+      if (err) return res.status(400).json({ success: false, err });
+      return res.status(200).json({ success: true });
+    }
+  );
 });
 
 //delete a admin
-Router.route("/:id").delete(function (req, res) {
-  Admin.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Data is deleted!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+Router.delete("/:id", (req, res) => {
+  Admin.findByIdAndDelete(req.params.id).exec((err,  deleteUser) => {
+    if (err){
+      res.send(err);
+    }
+    return res.json(deleteUser);
+  });
 });
 
 Router.route("/:id").get(function (req, res) {
@@ -79,8 +76,6 @@ Router.route("/update/:id").post(function (req, res) {
       });
   });
 });
-
-
 
 Router.route("/:id").get(function (req, res) {
   let id = req.params.id;
@@ -115,6 +110,5 @@ Router.route("/:id").delete(function (req, res) {
     .then(() => res.json("Data is deleted!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
 
 module.exports = Router;
