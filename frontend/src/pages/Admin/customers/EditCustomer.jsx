@@ -1,210 +1,196 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './Customer.css'
+import React, { Component } from "react";
+import axios from "axios";
+import { setErrors } from "./setErrors";
+import { withRouter } from "react-router-dom";
+import Swal from "sweetalert2";
 
-export default class EditUser extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.onChangeFirstName = this.onChangeFirstname.bind(this);
-        this.onChangeLastName = this.onChangeLastname.bind(this);
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeContactNumber = this.onChangeContactNumber.bind(this);
-        this.onChangeAddress = this.onChangeAddress.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
-            firstName: '',
-            lastName: '',
-            username: '',
-            email: '',
-            contactNumber: '',
-            address: '',
-
-            usernameError: '',
-            contactNumberError: '',
-        }
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:3000/customer/' + this.props.match.params.id)
-            .then(response => {
-                this.setState({
-                    username: response.data.username,
-                    email: response.data.email,
-                    contact: response.data.contact,
-                })
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-    }
-
-
-    onChangeFirstName(e) {
-        this.setState({
-            firstName: e.target.value
-        });
-    }
-
-    onChangeLastName(e) {
-        this.setState({
-            lastName: e.target.value
-        });
-    }
-
-    onChangeUsername(e) {
-        this.setState({
-            username: e.target.value
-        });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onChangeContactNumber(e) {
-        this.setState({
-            contactNumber: e.target.value
-        });
-    }
-
-    onChangeAddress(e) {
-        this.setState({
-            address: e.target.value
-        });
-    }
-
-    validate = () => {
-        let isError = false;
-
-        const errors = {
-            usernameError: "",
-            contactNumberError: ""
-        };
-
-        if (this.state.name.length < 3) {
-            isError = true;
-            errors.usernameError = "Username must be at least 3 characters";
-        }
-
-        if (this.state.contactNumber.length < 10) {
-            isError = true;
-            errors.contactNumberError = "Mobile Number must be at least 10 numbers";
-        }
-
-        if ("contactNumber" !== "undefined") {
-            var pattern = new RegExp(/^[0-9\b]+$/);
-            if (!pattern.test(this.state.contactNumber)) {
-                isError = true;
-                errors.contactNumberError = "Please enter only number.";
-            } else if (this.state.contactNumber.length < 10) {
-                isError = true;
-                errors.contactNumberError = "Please enter valid phone number.";
-            }
-        }
-
-        this.setState({
-            ...this.state,
-            ...errors
-        });
-
-        return isError;
+class EditCustomer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",  
+      lastName: "",
+      username: "",
+      email: "",
+      contactNumber: "",
+      address: "",
+      errors: {},
     };
+  }
 
-    onSubmit(e) {
-        e.preventDefault();
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    console.log(this.props.match.params.id);
+    axios.get(`http://localhost:3000/customer/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          firstName: res.data.user.firstName,  
+          lastName: res.data.user.lastName,
+          username: res.data.user.username,
+          email: res.data.user.email,
+          contactNumber: res.data.user.contactNumber,
+          address: res.data.user.address,
+        });
+      }
+    });
+  }
 
-        const obj = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            username: this.state.username,
-            email: this.state.email,
-            contactNumber: this.state.contactNumber,
-            address: this.state.address
-        };
-        axios.post('http://localhost:3000/customer/update/' + this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
-        alert('Edit Customer Successfully')
-        this.props.history.push('/customers');
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
+  };
+
+  validate = (email, contactNumber) => {
+    const errors = setErrors(email, contactNumber);
+    this.setState({ errors: errors });
+    return Object.values(errors).every((err) => err === "");
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const id = this.props.match.params.id;
+    const { firstName, lastName, username, email, contactNumber, address } = this.state;
+    if (this.validate(email, contactNumber)) {
+      const data = {
+        firstName: firstName,  
+        lastName: lastName,
+        username: username,
+        email: email,
+        contactNumber: contactNumber,
+        address: address,
+      };
+      console.log(data);
+      axios.put(`http://localhost:3000/customer/${id}`, data).then((res) => {
+        if (res.data.success) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Edit customer successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.props.history.push("/auth/user/admin/customers/");
+        }
+      });
     }
+  };
 
-    render() {
-        return (
-            <div style={{ marginTop: 50, marginRight: 400, marginLeft: 400 }}>
-                <h3 style={{ fontWeight: 1000 }}><center>Update Customer</center></h3>
-                <button class="btn btn-danger" style={{ marginLeft: 15, marginBottom: 10 }} ><Link to={"/auth/user/admin/customers"} style={{ textDecoration: 'none' }}>Back</Link></button>
-                <div className="container">
-                    <form onSubmit={this.onSubmit}>
+  render() {
+    return (
+      <div
+        className="container"
+        style={{
+          width: 900,
+          backgroundColor: "#a39d9d",
+          borderRadius: 5,
+          paddingBottom: 20,
+          paddingTop: 20,
+        }}
+      >
+        <div className="col-md-10 mt-3 mx-auto">
+          <h1 className="h3 mb-3 font-weight-bold">
+            <center>Edit Customer</center>
+          </h1>
+          <form className="needs-validation" noValidate>
 
-                    <div className="form-group" style={{ marginTop: 20, marginBottom: 20 }}>
-                            <label>Firstname:</label>
-                            <input type="text"
-                                className="form-control"
-                                value={this.state.firstName}
-                                onChange={this.onChangeFirstName}
-                                required
-                            />
-                            <span className="text-danger">{this.state.nameError}</span>
-                        </div>
-
-                    <div className="form-group" style={{ marginTop: 20, marginBottom: 20 }}>
-                            <label>Lastname:</label>
-                            <input type="text"
-                                className="form-control"
-                                value={this.state.lastName}
-                                onChange={this.onChangeLastName}
-                                required
-                            />
-                            <span className="text-danger">{this.state.nameError}</span>
-                        </div>
-
-                        <div className="form-group" style={{ marginTop: 20, marginBottom: 20 }}>
-                            <label>Username:</label>
-                            <input type="text"
-                                className="form-control"
-                                value={this.state.username}
-                                onChange={this.onChangeUsername}
-                                required
-                            />
-                            <span className="text-danger">{this.state.nameError}</span>
-                        </div>
-
-                        <div className="form-group" style={{ marginTop: 20, marginBottom: 20 }}>
-                            <label>Email Address:</label>
-                            <input type="email"
-                                className="form-control"
-                                value={this.state.email}
-                                onChange={this.onChangeEmail}
-                                disabled
-                            />
-                        </div>
-
-                        <div className="form-group" style={{ marginTop: 20, marginBottom: 20 }}>
-                            <label>Mobile Number:</label>
-                            <input type="text"
-                                className="form-control"
-                                value={this.state.contactNumber}
-                                onChange={this.onChangeContactNumber}
-                                required
-                            />
-                            <span className="text-danger">{this.state.contactNumberError}</span>
-                        </div>
-
-                        <br />
-
-                        <div className="form-group" style={{ marginLeft: 475, marginTop: 30 }}>
-                            <input type="submit" value="Update Customer" className="btn btn-success" />
-                        </div>
-
-                    </form>
-                </div>
+          <div className="form-group">
+              <label>First Name</label>
+              <input
+                type="text"
+                className="form-control"
+                name="firstName"
+                placeholder="Enter First Name"
+                value={this.state.firstName}
+                onChange={this.handleInputChange}
+                
+              />
             </div>
-        )
-    }
+
+            <div className="form-group">
+              <label>Last Name</label>
+              <input
+                type="text"
+                className="form-control"
+                name="lastName"
+                placeholder="Enter Lastname"
+                value={this.state.lastName}
+                onChange={this.handleInputChange}
+                
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control"
+                name="username"
+                placeholder="Enter Username"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+                disabled
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="Enter Email Address"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              />
+              {this.state.errors.email && (
+                <div className="text-danger">{this.state.errors.email}</div>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label>Mobile Number</label>
+              <input
+                type="text"
+                className="form-control"
+                name="contact"
+                placeholder="Enter Mobile Number"
+                value={this.state.contactNumber}
+                onChange={this.handleInputChange}
+              />
+              {this.state.errors.contactNumber && (
+                <div className="text-danger">{this.state.errors.contactNumber}</div>
+              )}
+            </div>
+
+
+            <div className="form-group">
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                name="address"
+                placeholder="Enter Address"
+                value={this.state.address}
+                onChange={this.handleInputChange}
+                
+              />
+            </div>
+
+            <button
+              className="btn btn-success"
+              type="submit"
+              onClick={this.onSubmit}
+            >
+              Update
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
+
+export default withRouter(EditCustomer);

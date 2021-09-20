@@ -13,7 +13,7 @@ const {
 const verifyAdminAuth = require("../auth/verifyAdminAuth");
 const verifyCustomerAuth = require("../auth/verifyCustomerAuth");
 
-router.get("/:id", verifyAdminAuth, getCustomerDetails);
+//router.get("/:id", verifyAdminAuth, getCustomerDetails);
 router.post("/register", saveCustomer);
 router.get("/my", verifyCustomerAuth, getCustomerDetails);
 router.post("/create", saveCustomer);
@@ -21,7 +21,7 @@ router.delete("/:id", deleteCustomer);
 router.get("/userProfile", verifyCustomerAuth, getUserprofileDetails);
 router.put("/updateUserProfile/:id", verifyCustomerAuth, updateUserProfile);
 
-router.route('/').get(function(req, res) {
+/*router.route('/').get(function(req, res) {
     Customer.find(function(err, users) {
             if (err) {
                 console.log(err);
@@ -56,6 +56,50 @@ router.route('/:id').delete(function(req, res) {
     Customer.findByIdAndDelete(req.params.id)
         .then(() => res.json('Data is deleted!'))
         .catch(err => res.status(400).json('Error: ' + err));
-});
+});*/
+
+//get all customers
+router.get("/", (req, res) => {
+    Customer.find().exec((err, users) => {
+      if (err) return res.status(400).json({ success: false, err });
+      return res.status(200).json({ success: true, users: users });
+    });
+  });
+
+
+  
+  
+  //get a customer
+  router.get("/:id", (req, res) => {
+    let id = req.params.id;
+    
+    Customer.findById(id, function (err, user){
+      if (err) return res.json({ success: false, err });
+      return res.json({ success: true, user });
+    });
+  });
+  
+  //update a customer
+  router.put("/:id", (req, res) => {
+   Customer.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      (err, user) => {
+        if (err) return res.status(400).json({ success: false, err });
+        return res.status(200).json({ success: true });
+      }
+    );
+  });
+  
+  
+  
+  
+  router.route("/:id").delete(function (req, res) {
+    Customer.findByIdAndDelete(req.params.id)
+      .then(() => res.json("Data is deleted!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  });
 
 module.exports = router;
