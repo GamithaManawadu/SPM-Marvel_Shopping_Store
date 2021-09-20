@@ -71,8 +71,8 @@ export default class Customer extends Component {
     const marginLeft = 40;
     const doc = new jsPDF(orientation, unit, size);
 
-    const title = "Marvel Admin Report ";
-    const headers = [["Username", "Email Address", "Mobile Number"]];
+    const title = "Marvel Customer Report ";
+    const headers = [["First Name", "Last Name", "Username", "Email Address", "Mobile Number", "Address"]];
 
     const users = this.state.users.map((users) => [
         users.firstName,
