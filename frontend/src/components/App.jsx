@@ -15,7 +15,7 @@ import Register from "../pages/Register";
 import Contact from "../pages/Contact";
 
 import EditCustomer from "../pages/Admin/customers/EditCustomer";
-import CustomerReport from "../pages/Admin/customers/Report";
+
 import Customers from "../pages/Admin/customers/Customer";
 import Admintable from "../pages/Admin/admins/Admintable";
 import EditAdmin from "../pages/Admin/admins/EditAdmin";
@@ -64,14 +64,12 @@ const App = () => {
           <Sidebar />
           <Customers />
         </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/admin/customer/edit/:id">
+        <PrivateRoute exact path="/auth/user/admin/customers/edit/:id">
           <Sidebar />
           <EditCustomer />
         </PrivateRoute>
-        <PrivateRoute exact path="/auth/user/admin/customer/report">
-          <Sidebar />
-          <CustomerReport />
-        </PrivateRoute>
+        
+        
         <PrivateRoute exact path="/auth/user/admin/admins">
           <Sidebar />
           <Admintable />
