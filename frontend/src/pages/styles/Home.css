@@ -10,8 +10,15 @@
   margin-left: 130px;
 }
 .text-content h1 {
-  color: rgb(5, 5, 5);
-  font-size: 270px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+    AppleGothic, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  color: crimson;
+  margin-top: 10px;
 }
 .text-content p {
   max-width: 85ch;
@@ -36,14 +43,17 @@
 .banner-container {
   width: 50px;
   object-fit: cover;
-  margin-left: -80px;
-  height: 10%;
+  margin-bottom: 500px;
+  margin-top: -250px;
+  margin-left: 500px;
 }
 
 .landing-img-container img {
   max-width: 100%;
-  height: auto;
+  height: 10%;
   object-fit: cover;
+  align-content: center;
+  margin-top: -140px;
 }
 
 /* Home  styles */
