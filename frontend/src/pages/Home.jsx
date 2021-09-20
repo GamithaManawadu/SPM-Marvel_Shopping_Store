@@ -6,8 +6,9 @@ import SpeakerContent from "../components/home/SpeakerContent";
 import Countdown from "../components/home/Countdown";
 import Footer from "../components/footer/Footer";
 
+
 import "./styles/Home.css";
-import LandingImg from "../../src/assets/images/title.png";
+import LandingImg from "../../src/assets/images/marvel1.gif";
 
 
 const Home = () => {
@@ -27,7 +28,8 @@ const Home = () => {
 				</div>
 				
 				<TitleContent />
-				<Countdown />
+				
+				
 				<SpeakerContent />
 				
 				

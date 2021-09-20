@@ -1,13 +1,16 @@
 .nav-logo {
-  size: 40px;
-  height: 120px;
-  width: 250px;
+  size: 160px;
+  height: 300px;
+  width: 350px;
+  margin-top: -200px;
 }
 .navbar-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80px;
+  margin-bottom: 200px;
+  margin-left: 0px;
 
   max-width: 1900px;
   background-color: rgb(218, 12, 12);
@@ -51,6 +54,14 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
+}
+
+.nav-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 .mobile-menu {
@@ -112,17 +123,17 @@ nav a {
 
   nav,
   .nav-cta {
-    transform: translateY(-60rem);
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: white;
   }
 
   .nav-cta {
-    padding-top: 4rem;
-    bottom: 22%;
-    width: 100%;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     transition: all 0.3s ease-in-out;
     left: 0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
