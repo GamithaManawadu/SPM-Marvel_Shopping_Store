@@ -18,8 +18,8 @@ Router.get("/", (req, res) => {
 //get a admin
 Router.get("/:id", (req, res) => {
   let id = req.params.id;
-  
-  Admin.findById(id, function (err, user){
+
+  Admin.findById(id, function (err, user) {
     if (err) return res.json({ success: false, err });
     return res.json({ success: true, user });
   });
@@ -41,8 +41,8 @@ Router.put("/:id", (req, res) => {
 
 //delete a admin
 Router.delete("/:id", (req, res) => {
-  Admin.findByIdAndDelete(req.params.id).exec((err,  deleteUser) => {
-    if (err){
+  Admin.findByIdAndDelete(req.params.id).exec((err, deleteUser) => {
+    if (err) {
       res.send(err);
     }
     return res.json(deleteUser);

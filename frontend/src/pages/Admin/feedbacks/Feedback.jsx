@@ -1,79 +1,82 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import DeleteForeverRoundedIcon from "@material-ui/icons/DeleteForeverRounded";
+import Swal from "sweetalert2";
 
-const Feedback = props => (
-    <tr>
-        <td className={props.feedback.completed ? 'completed' : ''}>{props.feedback.email}</td>
-        <td className={props.feedback.completed ? 'completed' : ''}>{props.feedback.message}</td>
-        <td>
-            <button className="btn btn-danger" style={{ marginLeft: 10 }} href="/" onClick={() => { props.deleteFeedback(props.feedback._id) }}><DeleteForeverRoundedIcon/></button>
-        </td>
-    </tr>
-)
+class FeedbacksList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      feedbacks: [],
+    };
+  }
 
-export default class FeedbacksList extends Component {
+  componentDidMount() {
+    this.getFeedbacks();
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = { feedbacks: [] };
-
-        this.deleteFeedback = this.deleteFeedback.bind(this);
-    }
-
-    componentDidMount() {
-        axios.get('http://localhost:3000/feedback/')
-            .then(response => {
-                this.setState({ feedbacks: response.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    componentDidUpdate() {
-        axios.get('http://localhost:3000/feedback/')
-            .then(response => {
-                this.setState({ feedbacks: response.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    deleteFeedback(id) {
-        axios.delete('http://localhost:3000/feedback/' + id)
-            .then(res => { console.log(res.data) });
-
+  getFeedbacks() {
+    axios.get("http://localhost:3000/feedback").then((res) => {
+      if (res.data.success) {
         this.setState({
-            feedbacks: this.state.feedbacks.filter(el => el._id !== id)
-        })
-        alert('Delete feedback Successfully')
-    }
+          feedbacks: res.data.feedbacks,
+        });
+        console.log(this.state.feedbacks);
+      }
+    });
+  }
 
-    feedbackList() {
-        return this.state.feedbacks.map(currentFeedback => {
-            return <Feedback feedback={currentFeedback} deleteFeedback={this.deleteFeedback} key={currentFeedback.id} />;
-        })
-    }
+  onDelete = (id) => {
+    axios.delete(`http://localhost:3000/feedback/${id}`).then((res) => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Delete Feedback successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      this.getFeedbacks();
+    });
+  };
 
-    render() {
-        return (
-            <div style={{ marginTop: 30, width: '100%' }}>
-                <h3 style={{ fontWeight: 1000 }}><center>List of Feedbacks</center></h3>
-                <table className="table table-striped" style={{ marginTop: 40 }}>
-                    <thead>
-                        <tr>
-                            <th>Email Address</th>
-                            <th>Message</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.feedbackList()}
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
+  render() {
+    return (
+        <div className="container">
+        <h1 className="h3 mb-3 font-weight-bold">
+          <center>List of Feedbacks</center>
+        </h1>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Message</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.feedbacks.map((feedback, index) => (
+              <tr>
+                <th scope="row">{index + 1}</th>
+                <td>{feedback.email}</td>
+                <td>{feedback.message}</td>
+                <td>
+                  <a
+                    className="btn btn-danger"
+                    href="#"
+                    onClick={() => this.onDelete(feedback._id)}
+                  >
+                    <DeleteForeverRoundedIcon />
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
+
+export default withRouter(FeedbacksList);

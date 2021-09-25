@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import EditRoundedIcon from "@material-ui/icons/EditRounded";
@@ -19,6 +18,7 @@ export default class Admintable extends Component {
     this.getUsers();
   }
 
+  //retrieve
   getUsers() {
     axios.get("http://localhost:3000/admin").then((res) => {
       if (res.data.success) {
@@ -30,6 +30,7 @@ export default class Admintable extends Component {
     });
   }
 
+  //delete
   onDelete = (id) => {
     axios.delete(`http://localhost:3000/admin/${id}`).then((res) => {
       Swal.fire({
@@ -43,6 +44,7 @@ export default class Admintable extends Component {
     });
   };
 
+  //Search
   filterData(users, searchKey) {
     const result = users.filter(
       (users) =>
@@ -63,7 +65,6 @@ export default class Admintable extends Component {
   };
 
   //Report generation part starting from here
-
   exportPDF = () => {
     const unit = "pt";
     const size = "A3"; // Use A1, A2, A3 or A4
@@ -118,7 +119,7 @@ export default class Admintable extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">No</th>
               <th scope="col">Username</th>
               <th scope="col">Email Address</th>
               <th scope="col">Mobile Number</th>
