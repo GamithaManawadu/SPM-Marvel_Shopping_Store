@@ -16,6 +16,7 @@ class FeedbacksList extends Component {
     this.getFeedbacks();
   }
 
+  //get all feedbacks
   getFeedbacks() {
     axios.get("http://localhost:3000/feedback").then((res) => {
       if (res.data.success) {
@@ -27,6 +28,7 @@ class FeedbacksList extends Component {
     });
   }
 
+  //delete a feedback
   onDelete = (id) => {
     axios.delete(`http://localhost:3000/feedback/${id}`).then((res) => {
       Swal.fire({
