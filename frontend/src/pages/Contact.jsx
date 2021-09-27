@@ -69,8 +69,8 @@ class Contact extends Component {
             width: 670,
             backgroundColor: "#e3e4e6",
             borderRadius: 5,
-            paddingBottom: 20,
-            paddingTop: 20,
+            paddingBottom: 50,
+            paddingTop: 50,
           }}
         >
           <h3 style={{ fontSize: 40 }}>
