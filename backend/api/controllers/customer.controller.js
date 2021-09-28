@@ -26,79 +26,96 @@ const getCustomerDetails = async (request, response) => {
 	}
 };
 
+
+
 const deleteCustomer = async (req, res) => {
 	if (req.params.id) {
-		try {
-			await Customer.findByIdAndDelete(req.params.id);
-			return res.status(200).send();
-		} catch (err) {
-			console.error(err.message);
-			return res.status(500).send();
-		}
+	  try {
+		await Customer.findByIdAndDelete(req.params.id);
+		return res.status(200).send();
+	  } catch (err) {
+		console.error(err.message);
+		return res.status(500).send();
+	  }
 	}
-};
+  };
 
-const getUserprofileDetails = async (request, response) => {
+  const getUserprofileDetails = async (req, res) => {
+	console.log(req.body);
 	try {
-		const UserProfileDetails = await Customer.findById(req.params.userId);
-		response.status(200).json({ customer: UserProfileDetails });
+		const { id, firstName, lastName, username, email, contactNumber, address } = await Customer.findById(req.body.userId);
+	  res.status(200).json({ customer: customer });
 	} catch (error) {
-		response.status(404).json({ message: error.message });
+	  res.status(404).json({ message: error.message });
 	}
-
-};
-
-const updateUserProfile = async (req, res) => {
+  };
+  
+  const updateUserProfile = async (req, res) => {
 	//*request params validation
-	if (req.params.id) {
-		//*request body validation
-		if (req.body) {
-			const { firstName, lastName, username, password, email, contactNumber, address } = req.body;
-			const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-			//*user update input validation
-			if (!firstName || !lastName|| !username || !password || !email || !contactNumber || !addresss) {
-				return res.status(400).json({ message: "Please fill all fields" });
-			}
-			if (!email.match(pattern)) {
-				return res
-					.status(400)
-					.json({ message: "Please enter a valid email address" });
-			}
-
-			if (password.length < 6) {
-				return res
-					.status(400)
-					.json({ message: "Password should be at least 6 characters long" });
-			}
-
-			if (contactNumber.length < 10) {
-				return res
-					.status(400)
-					.json({ message: "Please enter a valid phone number" });
-			}
-
-			try {
-				// * update user package
-				await Package.findByIdAndUpdate(req.params.id, {
-				firstName,
-				lastName,
-				username,
-				email,
-				password,
-				contactNumber,
-				addresss,
-				});
-
-				// * sending as updated
-				return res.status(201).send(true);
-			} catch (err) {
-				console.error(err.message);
-				return res.status(500).send();
-			}
+	if (req.body.userId) {
+	  //*request body validation
+	  if (req.body) {
+		const { firstName, lastName, username, password, email, contactNumber, address } = req.body;
+		const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+		//*user update input validation
+		if (!firstName || !lastName || !username || !password || !email || !contactNumber || !address) {
+		  return res.status(400).json({ message: "Please fill all fields" });
 		}
-
-		return res.status(400).send();
+		if (!email.match(pattern)) {
+		  return res
+			.status(400)
+			.json({ message: "Please enter a valid email address" });
+		}
+  
+		if (password.length < 6) {
+		  return res
+			.status(400)
+			.json({ message: "Password should be at least 6 characters long" });
+		}
+  
+		if (contactNumber.length < 10) {
+		  return res
+			.status(400)
+			.json({ message: "Please enter a valid phone number" });
+		}
+  
+		try {
+		  // * hashing the password
+		  const salt = await bcrypt.genSalt();
+		  const hPassword = await bcrypt.hash(password, salt);
+		  // * update user userprofile Update
+		  await Customer.findByIdAndUpdate(req.body.userId, {
+			firstName,
+			lastName,
+			username,
+			password: hPassword,
+			email,
+			contactNumber,
+			address
+		  });
+		  console.log(req.body);
+		  // * sending as updated
+		  return res.status(201).json("Updated Successfully");
+		} catch (err) {
+		  console.error(err.message);
+		  return res.status(500).send();
+		}
+	  }
+  
+	  return res.status(400).send();
 	}
-};
+  };
+  
+  const deleteUserProfile = async (req, res) => {
+	try {
+	  await Customer.findByIdAndDelete(req.body.userId);
+	  res.status(200).send("Deleted Successfully");
+	} catch (err) {
+	  res.status(400);
+	  console.log(err.message);
+	}
+  };
 
-module.exports = { saveCustomer, getCustomerDetails, deleteCustomer, getUserprofileDetails, updateUserProfile };
+
+
+module.exports = { saveCustomer, getCustomerDetails, deleteCustomer, getUserprofileDetails, updateUserProfile, deleteUserProfile };

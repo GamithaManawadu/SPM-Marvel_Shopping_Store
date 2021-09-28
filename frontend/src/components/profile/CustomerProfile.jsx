@@ -6,6 +6,7 @@ import { BASE_URL } from "../../config/config";
 import { getUserToken } from "../../auth/userAuth";
 
 import ProfileCard from "./ProfileCard";
+import Detail from "./Detail";
 
 const CustomerProfile = () => {
 	const [profile, setProfile] = useState({});
@@ -14,30 +15,33 @@ const CustomerProfile = () => {
 
 	useEffect(async () => {
 		console.log(getUserToken());
-		const result = await fetch(`${BASE_URL}/attendee/my`, {
+		const result = await fetch(`${BASE_URL}/customer/my`, {
 			headers: {
 				"Content-Type": "application/json",
 				authToken: getUserToken(),
 			},
 		});
 		const profile = await result.json();
-		setProfile(profile.attendee);
+		setProfile(profile.customer);
 	}, []);
 	return (
 		<div className="researcher-profile">
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
+				<Link className="add-new" to="/auth/user/customer/profile">
+					Edit My Profile
+				</Link>
 			</div>
 			<motion.div
 				initial={{ y: 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ type: "tween", duration: 0.8, delay: 0.3 }}
 			>
-				<h1>You are successfully registered for the conference.</h1>
-				<h1 className="attendee-greeting">
-					Your token number is <span className="blue">{profile.id}</span>
-				</h1>
+
+			<Detail profile={profile} />
+				
 			</motion.div>
+
 		</div>
 	);
 };
