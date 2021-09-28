@@ -5,9 +5,9 @@ const router = express.Router();
 const {
 	saveCustomer,
 	getCustomerDetails,
-    deleteCustomer,
-    getUserprofileDetails,
-	updateUserProfile,
+   deleteCustomer,
+    updateUserProfile,
+    deleteUserProfile,
 
 } = require("../controllers/customer.controller");
 const verifyAdminAuth = require("../auth/verifyAdminAuth");
@@ -18,8 +18,8 @@ router.post("/register", saveCustomer);
 router.get("/my", verifyCustomerAuth, getCustomerDetails);
 router.post("/create", saveCustomer);
 router.delete("/:id", deleteCustomer);
-router.get("/userProfile", verifyCustomerAuth, getUserprofileDetails);
-router.put("/updateUserProfile/:id", verifyCustomerAuth, updateUserProfile);
+router.delete("/deleteProfile", verifyCustomerAuth, deleteUserProfile);
+router.put("/updateUserProfile", verifyCustomerAuth, updateUserProfile);
 
 /*router.route('/').get(function(req, res) {
     Customer.find(function(err, users) {
@@ -102,4 +102,6 @@ router.get("/", (req, res) => {
       .catch((err) => res.status(400).json("Error: " + err));
   });
 
+
+  //router.get("/userProfile", (req, res) => {
 module.exports = router;

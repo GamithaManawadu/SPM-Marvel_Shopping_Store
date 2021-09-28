@@ -18,7 +18,7 @@ const ProfileCard = ({ profile }) => {
 				<h2>{`${getUserType()}`}</h2>
 			</div>
 			<div className="profile-details">
-				<h2>{'Welcome'}</h2>
+				
 				<h3>{` ${profile.firstName} ${
 					profile.lastName
 				} `}</h3>
