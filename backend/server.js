@@ -7,7 +7,7 @@ const customerRoutes = require("./api/routes/customer.routes");
 const commonRoutes = require("./api/routes/common.routes");
 const adminRoutes = require("./api/routes/admin.routes");
 const feedbackRoutes = require("./api/routes/feedback.routes");
-const productRoutes = require("./api/routes/product");
+const productRoutes = require("./api/routes/product.route");
 const deliveryserviceRoutes = require("./api/routes/deliveryservice.routes");
 
 const app = express();
@@ -25,6 +25,10 @@ app.use("/admin", adminRoutes);
 app.use("/feedback", feedbackRoutes);
 app.use("/product", productRoutes);
 app.use("/deliveryservice", deliveryserviceRoutes);
+
+//use this to show the image you have in node js server to client (react js)
+//https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
+app.use('/uploads', express.static('uploads'));
 
 const PORT = process.env.PORT || 3000;
 dotenv.config();

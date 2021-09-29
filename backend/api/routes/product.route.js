@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { Product } = require("../models/Product");
+const  Product  = require("../models/product.model");
 const multer = require('multer');
 
-const { auth } = require("../auth/auth");
+
 const { Router } = require('express');
 
 var storage = multer.diskStorage({
@@ -25,11 +25,26 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file")
 
 
+
+
+const {
+	getAllProducts,
+	addProduct,
+	getProducts,
+} = require("../controllers/product.controller");
+// verifyAdminAuth = require("../auth/verifyAdminAuth");
+// verifyCustomerAuth = require("../auth/verifyCustomerAuth");
+
+//.get("/", verifyAdminAuth, getAllDeliveryServices);
+router.get("/",getAllProducts);
+router.get("/:id", getProducts);
+router.post("/add", addProduct);
+
 //=================================
 //             Product
 //=================================
 
-router.post("/uploadImage", auth, (req, res) => {
+/*router.post("/uploadImage", (req, res) => {
 
     upload(req, res, err => {
         if (err) {
@@ -41,17 +56,20 @@ router.post("/uploadImage", auth, (req, res) => {
 });
 
 
-router.post("/uploadProduct", auth, (req, res) => {
+router.post("/uploadProduct", (req, res) => {
 
     //save all the data we got from the client into the DB 
-    const product = new Product(req.body)
-
+    const product = new Product(req.body)   
+       
     product.save((err) => {
         if (err) return res.status(400).json({ success: false, err })
         return res.status(200).json({ success: true })
     })
 
 });
+
+
+
 
 
 router.post("/getProducts", (req, res) => {
@@ -174,7 +192,7 @@ router.route('/:id').delete(function(req, res) {
         .then(() => res.json('Data is deleted!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-
+*/
 
 
 

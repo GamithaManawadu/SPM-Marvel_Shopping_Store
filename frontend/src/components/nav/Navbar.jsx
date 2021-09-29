@@ -34,7 +34,7 @@ const Navbar = () => {
 				) : (
 					<Link to={`/auth/user/${getUserType()}/dashboard`}>Dashboard</Link>
 				)}
-				<Link to="/products">Products</Link>
+				<Link to="/store">Products</Link>
 				<Link to="/blogs">About</Link>
 				<Link to="/contact">Contact</Link>
 				<Link to="/cart">Cart</Link>

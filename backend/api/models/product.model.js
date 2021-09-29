@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const productSchema = mongoose.Schema({
-    writer: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+
+const ProductSchema = new mongoose.Schema({
+    
     title: {
         type: String,
         maxlength: 50
@@ -21,7 +18,7 @@ const productSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    continents: {
+    catergory: {
         type: Number,
         default: 1
     },
@@ -37,16 +34,8 @@ const productSchema = mongoose.Schema({
 }, { timestamps: true })
 
 
-productSchema.index({ 
-    title:'text',
-    description: 'text',
-}, {
-    weights: {
-        name: 5,
-        description: 1,
-    }
-})
 
-const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Product }
+const Product = mongoose.model("products", ProductSchema);
+
+module.exports =  Product; 
