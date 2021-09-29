@@ -22,6 +22,7 @@ class Contact extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  //add a feedback
   onSubmit = async (e) => {
     e.preventDefault();
 
