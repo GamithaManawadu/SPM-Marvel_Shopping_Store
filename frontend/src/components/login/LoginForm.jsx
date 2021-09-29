@@ -50,7 +50,7 @@ const LoginForm = () => {
 					location = "user/delivery/dashboard";
 					break;
 				case "store":
-					location = "user/storemanager/dashboard";
+					location = "user/admin/dashboard";
 					break;
 				case "customer":
 					location = "user/customer/dashboard";

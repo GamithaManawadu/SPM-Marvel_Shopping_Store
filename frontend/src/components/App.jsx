@@ -28,6 +28,18 @@ import Customer from "../pages/Customer";
 import StoreManagerDashboard from "../pages/StoreManagerDashboard";
 import Adminhome from "../pages/Admin/Home/Adminhome";
 import Feedback from "../pages/Admin/feedbacks/Feedback";
+//import ProductStore from "../components/ProductManager/views/LandingPage/LandingPage"
+//import ProductNav from "../components/ProductManager/views/NavBar/NavBar"
+import UploadProduct from "../components/storemanagerDashboard/UploadProductPage/UploadProductPageClassComponent"
+//import DetailProductPage from "../components/ProductManager/views/DetailProductPage/DetailProductPage"
+//import Product from "../components/ProductManager/views/ProductList/List"
+//import EditProduct from "../components/ProductManager/views/ProductList/EditProduct"
+//import ProductReport from "../components/ProductManager/views/ProductList/Report"
+//import Store from "../components/ProductManager/views/AllProducts/All"
+//import CartPage from "../components/ProductManager/views/CartPage/CartPage"
+
+
+
 
 const App = () => {
   return (
@@ -52,6 +64,13 @@ const App = () => {
         <Route exact path="/auth/login">
           <Login />
         </Route>
+        <Route exact path="/store">
+        <Home />
+          </Route>
+        <PrivateRoute exact path="/auth/user/customer/cart">
+        <Home />
+        </PrivateRoute>  
+
         <PrivateRoute exact path="/auth/user/customer/dashboard">
           <Customer />
         </PrivateRoute>
@@ -59,6 +78,7 @@ const App = () => {
       <PrivateRoute exact path="/auth/user/customer/profile">
           <Profile />
         </PrivateRoute>
+
       <Switch>
         <PrivateRoute exact path="/auth/user/admin/dashboard">
           <Sidebar />
@@ -86,13 +106,41 @@ const App = () => {
           <Sidebar />
           <Feedback />
         </PrivateRoute>
-        <PrivateStoreManagerRoute
-          exact
-          path="/auth/user/storemanager/dashboard"
-        >
+
+        <PrivateRoute exact path="/auth/user/store/dashboard">
           <Sidebar />
-          <StoreManagerDashboard />
-        </PrivateStoreManagerRoute>
+          <Adminhome />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/home">
+        <Sidebar />
+        <UploadProduct />
+       
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/product/upload">
+        <Sidebar />
+        <Adminhome />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/product/:productId">
+        <Sidebar />
+        <Adminhome />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/products">
+        <Sidebar />
+        <Adminhome />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/product/edit/:id">
+        <Sidebar />
+        <Adminhome />
+        </PrivateRoute>
+        <PrivateRoute exact path="/auth/user/admin/store/product/report">
+        <Sidebar />
+        <Adminhome />
+        </PrivateRoute>
+        
+
+
+        
+
         <PrivateRoute exact path="/auth/user/delivery/dashboard">
           <Delivery />
           {/* <Sidebar /> */}

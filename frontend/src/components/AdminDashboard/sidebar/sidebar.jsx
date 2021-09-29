@@ -34,7 +34,7 @@ const Sidebar = () => {
             </li>
             <li className="sidebarListItem">
               <a
-                href="/"
+                href="/auth/user/admin/store/home"
                 variant="body2"
                 className="nav-link"
                 style={{ textDecoration: "none" }}
