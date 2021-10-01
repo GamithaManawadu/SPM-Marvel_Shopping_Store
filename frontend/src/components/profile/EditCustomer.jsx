@@ -49,7 +49,7 @@ const EditCustomer = () => {
     setButtonStatus(true);
     try {
       updateUser.updatedAt = new Date();
-      const res = await axios.put(`"http://localhost:3000/customer/updateUserProfile`,{
+      const res = await axios.put(`"http://localhost:3000/customer/my/updateUserProfile`,{
         headers: {
           
           authToken: getUserToken(),
@@ -82,7 +82,7 @@ const EditCustomer = () => {
 
   const deleteprofile = async (id) => {
     try {
-      const res = await axios.delete("http://localhost:3000/customer/deleteProfile");
+      const res = await axios.delete("http://localhost:3000/customer/my/deleteProfile");
       console.log(id);
       if (res.status === 200) {
         setPopup(false);

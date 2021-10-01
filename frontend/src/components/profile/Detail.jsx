@@ -6,62 +6,62 @@ const Detail = ({ profile }) => {
         <div>
 
 <div
-        className="flex mx-auto items-center justify-center shadow-lg mt-28  mb-4 max-w-lg p-20"
-        data-aos="fade-down"
+        className="col-md-10 mt-3 mx-auto"
+        
       >
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <h1 className="text-5xl font-extrabold pb-10 pt-10 text-center ml-8">
+        
+          <h1 className="h3 mb-3 font-weight-bold">
             Profile Details
           </h1>
 
-          <div className="w-full md:w-full px-3 mb-2 mt-2 m-5">
-          <div className=" mb-4 ">
+          
+          <div className=" form-group">
               <label className=" font-semibold text-24px" for="firstName">
-                First Name
+                First Name 
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600 "
+                  className=" form-control"
                   type="text"
                   value={profile.firstName}
                 />
               </label>
             </div>
-            <div className=" mb-6 ">
+            <div className="form-group">
               <label className=" font-semibold text-24px" for="lastname">
                 Last Name
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600 "
+                  className=" form-control"
                   type="text"
                   value={profile.lastName}
                 />
               </label>
             </div>
-            <div className=" mb-8 ">
+            <div className=" form-group ">
               <label className=" font-semibold text-24px" for="username">
                 User Name
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600 "
+                  className="form-control"
                   type="text"
                   value={profile.username}
                 />
               </label>
             </div>
 
-            <div className="mb-10">
+            <div className="form-group">
               <label className=" font-semibold text-24px" for="email">
                 Email
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600"
+                  className="form-control"
                   type="text"
                   value={profile.email}
                 />
               </label>
             </div>
 
-            <div className="mb-12">
+            <div className="form-group">
               <label className=" font-semibold text-24px" for="mobile">
                 Mobile
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600"
+                  className="form-control"
                   id="mobile"
                   type="text"
                   value={profile.contactNumber}
@@ -69,19 +69,19 @@ const Detail = ({ profile }) => {
               </label>
             </div>
 
-            <div className="mb-14">
-              <label className=" font-semibold text-24px" for="mobile">
+            <div className="form-group">
+              <label className=" font-semibold text-24px" for="address">
                 Address
                 <input
-                  className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-light-blue border-opacity-100 bg-gray-100 text-gray-600"
+                  className="form-control"
                   id="mobile"
                   type="text"
                   value={profile.address}
                 />
               </label>
             </div>
-          </div>
-        </div>
+         
+        
       </div>
     </div>
   );
