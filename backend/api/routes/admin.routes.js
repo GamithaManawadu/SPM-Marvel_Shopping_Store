@@ -52,37 +52,6 @@ Router.delete("/:id", (req, res) => {
 
 
 
-//get a customer
-Router.get("/:id", (req, res) => {
-  let id = req.params.id;
-  
-  Customer.findById(id, function (err, user){
-    if (err) return res.json({ success: false, err });
-    return res.json({ success: true, user });
-  });
-});
 
-//update a customer
-Router.put("/:id", (req, res) => {
- Customer.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: req.body,
-    },
-    (err, user) => {
-      if (err) return res.status(400).json({ success: false, err });
-      return res.status(200).json({ success: true });
-    }
-  );
-});
-
-
-
-
-Router.route("/:id").delete(function (req, res) {
-  Customer.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Data is deleted!"))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
 
 module.exports = Router;

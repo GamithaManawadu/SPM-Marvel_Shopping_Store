@@ -96,7 +96,7 @@ router.get("/", (req, res) => {
   
   
   
-  
+  // delete customer
   router.route("/:id").delete(function (req, res) {
     Customer.findByIdAndDelete(req.params.id)
       .then(() => res.json("Data is deleted!"))
