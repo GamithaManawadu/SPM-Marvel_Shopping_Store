@@ -20,13 +20,12 @@ const EditCustomer = () => {
     firstName:"",
     lastName:"",
     username: "",
-    password: "",
     email: "",
     contactNumber: "",
     address:""
   });
 
-  const getUserprofileDetails = async () => {
+  const getCustomerDetails = async () => {
     try {
       const res = await axios.get("http://localhost:3000/customer/my", {
         headers: {
@@ -48,13 +47,8 @@ const EditCustomer = () => {
     e.preventDefualt();
     setButtonStatus(true);
     try {
-      updateUser.updatedAt = new Date();
-      const res = await axios.put(`"http://localhost:3000/customer/my/updateUserProfile`,{
-        headers: {
-          
-          authToken: getUserToken(),
-        },
-      },
+      
+      const res = await axios.put(`"http://localhost:3000/customer/updateUserProfile`,
       
       updateUser);
       setButtonStatus(false);
@@ -62,14 +56,13 @@ const EditCustomer = () => {
         firstName:"",
         lastName:"",
         username: "",
-        password: "",
         email: "",
         contactNumber: "",
         address:""
       });
       setSuccess("User updated successfully.");
-      getUserprofileDetails();
-      setTimeout(() => history.push("/auth/user/profile"), 2000);
+      getCustomerDetails();
+      setTimeout(() => history.push("/auth/user/customer/dashboard"), 2000);
     } catch (err) {
       setError(err.response);
       console.log(err.response);
@@ -77,12 +70,12 @@ const EditCustomer = () => {
     }
   };
   useEffect(() => {
-    getUserprofileDetails();
+    getCustomerDetails();
   }, []);
 
   const deleteprofile = async (id) => {
     try {
-      const res = await axios.delete("http://localhost:3000/customer/my/deleteProfile");
+      const res = await axios.delete("http://localhost:3000/customer/deleteProfile");
       console.log(id);
       if (res.status === 200) {
         setPopup(false);
@@ -175,21 +168,6 @@ const EditCustomer = () => {
           </div>
 
           <div className="mb-6">
-            <label className=" font-semibold text-24px" for="password">
-              Password
-              <input
-                className=" block md:text-left mb-1 md:mb-0 pr-4 p-1 sm:rounded-3xl border border-gray-400 border-opacity-100 text-gray-600 "
-                id="password"
-                type="password"
-                value={updateUser.password}
-                onChange={(e) =>
-                  setUpdatUser({ ...updateUser, password: e.target.value })
-                }
-              />
-            </label>
-          </div>
-
-          <div className="mb-6">
             <label className=" font-semibold text-24px" for="email">
               Email
               <input
@@ -237,9 +215,9 @@ const EditCustomer = () => {
           <div className="space-x-4">
             <button
               className="transition duration-500 ease-in-out  py-2 px-4 bg-light-blue hover:bg-black text-white sm:rounded-3xl transform hover:-translate-y-1 hover:scale-110 "
-              to={`/auth/user/profile`}
+              to={`/auth/user/customer/profile`}
             >
-              {buttonStatus ? "Saving" : "Edit"}
+              Edit
             </button>
           </div>
         </form>

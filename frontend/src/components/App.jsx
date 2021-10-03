@@ -13,7 +13,7 @@ import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Contact from "../pages/Contact";
-import Profile from "../components/profile/EditCustomer"
+import Profile from "../components/profile/EditCustomer";
 
 import EditCustomer from "../pages/Admin/customers/EditCustomer";
 

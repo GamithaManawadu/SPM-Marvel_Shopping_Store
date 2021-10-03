@@ -6,7 +6,7 @@ const router = express.Router();
 const {
 	saveCustomer,
 	getCustomerDetails,
-   deleteCustomer,
+    deleteCustomer,
     updateUserProfile,
     deleteUserProfile,
 
@@ -19,8 +19,8 @@ router.post("/register", saveCustomer);
 router.get("/my", verifyCustomerAuth, getCustomerDetails);
 router.post("/create", saveCustomer);
 router.delete("/:id", deleteCustomer);
-router.delete("/deleteProfile", verifyCustomerAuth, deleteUserProfile);
-router.put("/updateUserProfile", verifyCustomerAuth, updateUserProfile);
+router.delete("/deleteProfile",  deleteUserProfile);
+router.put("/updateUserProfile",  updateUserProfile);
 
 /*router.route('/').get(function(req, res) {
     Customer.find(function(err, users) {
@@ -102,6 +102,9 @@ router.get("/", (req, res) => {
       .then(() => res.json("Data is deleted!"))
       .catch((err) => res.status(400).json("Error: " + err));
   });
+
+
+  
 
 
   //Add to cart

@@ -1,0 +1,23 @@
+.text {
+  width: 450px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(235, 55, 55);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: large;
+}
+
+.form {
+  justify-content: center;
+  margin-left: 260px;
+  margin-top: -180px;
+}
+
+.banner {
+  height: 100px;
+  width: 150px;
+  margin-left: 700px;
+  margin-top: 140px;
+}
