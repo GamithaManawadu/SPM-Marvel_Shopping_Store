@@ -19,7 +19,7 @@ const getCustomerDetails = async (request, response) => {
 	try {
 		const { id, firstName, lastName, username, email, contactNumber, address } =
 			await Customer.findById(request.userId);
-		const customerDetails = { id, firstName, lastName, username, email, contactNumber, address };
+		const customerDetails = { id, firstName, lastName, username,  email, contactNumber, address };
 		response.status(200).json({ customer: customerDetails });
 	} catch (error) {
 		response.status(404).json({ message: error.message });
@@ -40,25 +40,17 @@ const deleteCustomer = async (req, res) => {
 	}
   };
 
-  const getUserprofileDetails = async (req, res) => {
-	console.log(req.body);
-	try {
-		const { id, firstName, lastName, username, email, contactNumber, address } = await Customer.findById(req.body.userId);
-	  res.status(200).json({ customer: customer });
-	} catch (error) {
-	  res.status(404).json({ message: error.message });
-	}
-  };
+ 
   
   const updateUserProfile = async (req, res) => {
 	//*request params validation
 	if (req.body.userId) {
 	  //*request body validation
 	  if (req.body) {
-		const { firstName, lastName, username, password, email, contactNumber, address } = req.body;
+		const { firstName, lastName, username,  email, contactNumber, address } = req.body;
 		const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 		//*user update input validation
-		if (!firstName || !lastName || !username || !password || !email || !contactNumber || !address) {
+		if (!firstName || !lastName || !username || !email || !contactNumber || !address) {
 		  return res.status(400).json({ message: "Please fill all fields" });
 		}
 		if (!email.match(pattern)) {
@@ -88,7 +80,6 @@ const deleteCustomer = async (req, res) => {
 			firstName,
 			lastName,
 			username,
-			password: hPassword,
 			email,
 			contactNumber,
 			address
@@ -118,4 +109,4 @@ const deleteCustomer = async (req, res) => {
 
 
 
-module.exports = { saveCustomer, getCustomerDetails, deleteCustomer, getUserprofileDetails, updateUserProfile, deleteUserProfile };
+module.exports = { saveCustomer, getCustomerDetails, deleteCustomer,  updateUserProfile, deleteUserProfile };

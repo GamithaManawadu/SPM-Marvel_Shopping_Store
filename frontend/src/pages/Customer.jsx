@@ -8,7 +8,7 @@ const Attendee = () => {
 	return (
 		<div>
 			<CustomerProfile />
-			<CustomerDetail />
+			
 
 		</div>
 	);

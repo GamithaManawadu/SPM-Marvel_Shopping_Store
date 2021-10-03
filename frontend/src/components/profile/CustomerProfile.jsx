@@ -29,7 +29,7 @@ const CustomerProfile = () => {
 			<div className="profile-container">
 				<ProfileCard profile={profile} />
 				<Link className="add-new" to="/auth/user/customer/profile">
-					Edit My Profile
+					Edit My Profile 
 				</Link>
 			</div>
 			<motion.div

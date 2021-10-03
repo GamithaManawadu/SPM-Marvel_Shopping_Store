@@ -91,12 +91,12 @@ const CustomerForm = () => {
 					/>
 					<div className="name-info">
 						<div className="first-name">
-							<label htmlFor="address">Home Address <FaCcVisa className="icon"/><FaCcMastercard/><FaCcAmex/></label>
+							<label htmlFor="address">Home Address </label>
 							<input
 								type="text"
 								name="address"
 								id="address"
-								maxLength="36"
+								maxLength="39"
 								placeholder="address"
 								required
 								autoComplete="off"
