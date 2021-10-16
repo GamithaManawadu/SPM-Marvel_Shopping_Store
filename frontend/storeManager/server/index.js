@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/product', require('./routes/product'));
-app.use('/product', require('./routes/product'));
+app.use("/api/deliveryservice", require('./routes/deliveryservice.routes'));
 
 
 //use this to show the image you have in node js server to client (react js)
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 app.listen(port, () => {
   console.log(`Server Running at ${port}`)
