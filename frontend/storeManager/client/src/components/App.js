@@ -11,6 +11,9 @@ import Footer from "./views/Footer/Footer1"
 import UploadProductPage from './views/UploadProductPage/UploadProductPage'
 import DetailProductPage from './views/DetailProductPage/DetailProductPage';
 import CartPage from './views/CartPage/CartPage';
+import CheckoutPage from './views/CheckoutPage/CheckoutPage';
+import DeliveryServicesPage from './views/DeliveryServices/DeliveryServicesPage';
+import AddDeliveryServicePage from './views/DeliveryServices/AddDeliveryServicePage';
 import HistoryPage from './views/HistoryPage/HistoryPage';
 import Product from './views/ProductList/List'
 import EditProduct from './views/ProductList/EditProduct';
@@ -34,7 +37,10 @@ function App() {
           <Route path="/allproducts" component={All}></Route>
           <Route path="/product/edit/:id" component={EditProduct}></Route>
           <Route exact path="/user/cart" component={Auth(CartPage, true)} />
-          <Route exact path="/history" component={Auth(HistoryPage, true)} />
+		  <Route exact path="/user/cart/checkout" component={Auth(CheckoutPage, true)} />
+          <Route exact path="/payment/history" component={Auth(HistoryPage, true)} />
+          <Route exact path="/delivery/deliveryservices" component={Auth(DeliveryServicesPage, true)} />
+          <Route exact path="/delivery/add/deliveryservice" component={Auth(AddDeliveryServicePage, true)} />
           <Route exact path="/product/reportlist" component={Report}></Route>
 
         </Switch>

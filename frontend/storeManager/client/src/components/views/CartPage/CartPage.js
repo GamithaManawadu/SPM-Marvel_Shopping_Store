@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Route, Redirect } from 'react-router';
+import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import history from './../../../history';
 import {
     getCartItems,
     removeCartItem,
@@ -8,7 +11,9 @@ import {
 import UserCardBlock from './Sections/UserCardBlock';
 import { Result, Empty } from 'antd';
 import Axios from 'axios';
+import { Button} from 'react-bootstrap';
 import Paypal from '../../utils/Paypal';
+
 function CartPage(props) {
     const dispatch = useDispatch();
     const [Total, setTotal] = useState(0)
@@ -58,26 +63,12 @@ function CartPage(props) {
             })
     }
 
-    const transactionSuccess = (data) => {
-        dispatch(onSuccessBuy({
-            cartDetail: props.user.cartDetail,
-            paymentData: data
-        }))
-            .then(response => {
-                if (response.payload.success) {
-                    setShowSuccess(true)
-                    setShowTotal(false)
-                }
-            })
+    const goToCheckout = () => {
+        // <Redirect to="/user/cart/checkout"></Redirect>
+        let path = `/user/cart/checkout`;
+        this.props.history.push(path);
     }
-
-    const transactionError = () => {
-        console.log('Paypal error')
-    }
-
-    const transactionCanceled = () => {
-        console.log('Transaction canceled')
-    }
+    
 
 
     return (
@@ -113,21 +104,9 @@ function CartPage(props) {
                 }
             </div>
 
-
-
-            {/* Paypal Button */}
-
-            {ShowTotal &&
-
-                <Paypal
-                    toPay={Total}
-                    onSuccess={transactionSuccess}
-                    transactionError={transactionError}
-                    transactionCanceled={transactionCanceled}
-                />
-
-            }
-
+            <div>
+                <Button variant="danger" size="lg" justifyContent="center" onClick={() => history.push('/user/cart/checkout')} >Checkout</Button>
+            </div>
 
 
         </div>

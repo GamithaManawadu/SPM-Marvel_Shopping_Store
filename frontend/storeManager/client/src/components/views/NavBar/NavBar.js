@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <nav className="menu" style={{ width: '60%' }}>
       <div className="menu__logo">
-        <a href="/">Admin</a>
+        <a href="/">Home</a>
       </div>
       <div className="menu__container">
         <div className="menu_left">

@@ -1,8 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    checkoutTable: {
+        width: "20rem",
+        textAlign: "right",
+        marginLeft: "900px",
+        marginRight: "5px",
+        backgroundColor: "lightcoral",
+        
+    }
+
+}));
 
 function UserCardBlock(props) {
-
-
 
     const renderCartImage = (images) => {
         if(images.length > 0) {
@@ -20,23 +31,20 @@ function UserCardBlock(props) {
                 </td> 
                 <td>{product.quantity} EA</td>
                 <td>$ {product.price} </td>
-                <td><button style={{ color: 'white', backgroundColor: 'red', borderRadius:4 }}
-                onClick={()=> props.removeItem(product._id)}
-                >Remove </button> </td>
             </tr>
         ))
     )
 
+    const classes = useStyles();
 
     return (
-        <div>
+        <div className={classes.checkoutTable}>
             <table>
                 <thead>
                     <tr>
                         <th>Product Image</th>
                         <th>Product Quantity</th>
                         <th>Product Price</th>
-                        <th>Remove from Cart</th>
                     </tr>
                 </thead>
                 <tbody>

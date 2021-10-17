@@ -34,4 +34,22 @@ const getDeliveryServiceDetails = async (request, response) => {
 	}
 };
 
-module.exports = { getAllDeliveryServices, addDeliveryService, getDeliveryServiceDetails };
+const deleteDeliveryService = async (request, response) => {
+
+	try {
+		app.delete('/api/deliveryservice/:id', (req, res, next) => {
+			.deleteOne({_id: req.params.id}).then(
+				() => {
+					res.status(200).json({
+						message: 'Successfully Deleted!'
+      });
+	  }
+	} 
+	} catch ((error) => {
+      res.status(400).json({
+        error: error
+      });
+    });
+}
+
+module.exports = { getAllDeliveryServices, addDeliveryService, getDeliveryServiceDetails, deleteDeliveryService };
