@@ -8,7 +8,7 @@ Group Member Details
 | Name                          | Student ID    |User Name 
 | ------------------------------| ------------- |---------------|
 | Sanduni Jayamali Gamage K.G.  | IT 19123578   |Sanduni-Gamage |
-| Athapaththu P.N.P             | IT 19028774   | apnimesliit1  |
+| Athapaththu P.N.P             | IT 19028774   | NimeshaPrasadini  |
 | Nandu Gamitha Manawadu        | IT 19140476   |GamithaManawadu|
 | Gimhana P.S.                  | IT 19143682   | SachinduG     |
 
